@@ -7,6 +7,7 @@
   <link href="img/quillia.png" rel="icon">
 
   <link href="https://fonts.googleapis.com/css?family=Montserrat:400,800" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
   <style>
@@ -298,23 +299,36 @@
     .logo-area { height: 44px; display: flex; align-items: center; }
     .logo-area img { height: 44px; width: auto; display: block; }
 
-    /* Top-right site name shown on its own row and using the same font */
+    /* Top-right site name shown on its own row and using the same font as navbar */
     .site-brand {
-      font-family: inherit;
-      font-size: 40px;
-      font-weight: 800;
+      font-family: 'Roboto', sans-serif;
+      font-size: 3.5rem;
+      font-weight: 700;
       color: #ffffff;
-      line-height: 1;
+      line-height: 1.2;
       margin-top: 4px;
-      letter-spacing: 1px;
+      margin-bottom: 0;
+      letter-spacing: 0;
+      text-transform: uppercase;
       position: absolute;
       top: 8px;
       right: 20px;
     }
 
+    @media (max-width: 1200px) {
+      .site-brand {
+        font-size: calc(1.475rem + 2.7vw);
+      }
+    }
+
     @media (max-width: 480px) {
       .site-header { height: 52px; padding: 0 10px; }
       .logo-area img { height: 36px; }
+      .site-brand {
+        font-size: 1.8rem;
+        top: 12px;
+        right: 10px;
+      }
     }
   </style>
 </head>
