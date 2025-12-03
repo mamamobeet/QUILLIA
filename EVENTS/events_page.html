@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Events</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<nav aria-label="Main navigation">
+  <div class="nav-brand">Quillia</div>
+  <ul>
+    <li><a href="#">Homepage</a></li>
+    <li><a href="#">About Us</a></li>
+    <li><a href="#">Menu</a></li>
+    <li><a href="#">Book Catalog</a></li>
+    <li><a href="#">Events</a></li>
+    <li><a href="#">Membership</a></li>
+    <li><a href="#">Merch</a></li>
+  </ul>
+  </nav>
+
+<header class="page-header">
+  <div class="header-inner">
+    <h3 class="eyebrow">Quillia: Coffee & Books</h3>
+    <h1>Book. Gather. Celebrate.</h1>
+    <h3 class="subhead">Secure Your Event Reservation Today!</h3>
+  </div>
+</header>
+
+<section>
+  <h2>Upcoming Events</h2>
+  <div class="events-list">
+    <article class="event book-club" data-details="Location: Cozy Corner; Host: Sarah L.; RSVP: bookclub@cutecafeevents.com">
+      <h3>Bookclub Meeting</h3>
+      <p><strong>Date & Time:</strong> Dec 5, 2025, 4:00PM - 6:00PM</p>
+      <p>A relaxing afternoon with fellow book lovers. Coffee and discussions await!</p>
+    </article>
+    <article class="event live-music" data-details="Beneficiary: Local Library; Tickets: $10; Donations welcome">
+      <h3>Charity Event</h3>
+      <p><strong>Date & Time:</strong> Dec 12, 2025, 7:00PM - 9:00PM</p>
+      <p>Support a good cause with great books, food, and music for everyone.</p>
+    </article>
+    <article class="event craft-workshop" data-details="Recommended age: 3-8; Materials provided; Free entry">
+      <h3>Children's Storytime</h3>
+      <p><strong>Date & Time:</strong> Dec 19, 2025, 10:00AM - 11:00AM</p>
+      <p>Bring the kids for enchanting tales and crafts in our cozy story corner!</p>
+    </article>
+    <article class="event live-music" data-details="Sign-up from 7:00PM; 5-minute slots; No cover charge">
+      <h3>Open Mic Night</h3>
+      <p><strong>Date & Time:</strong> Jan 8, 2026, 7:30PM - 10:00PM</p>
+      <p>Showcase your talent or enjoy local performers in an intimate setting.</p>
+    </article>
+    <article class="event book-club" data-details="Author: L. Thompson; Book signing at 5:30PM; Limited seating">
+      <h3>Author Meet & Greet</h3>
+      <p><strong>Date & Time:</strong> Jan 15, 2026, 5:00PM - 6:30PM</p>
+      <p>Meet a local author, hear readings, and get your copy signed.</p>
+    </article>
+    <article class="event craft-workshop" data-details="Registration required; Entry fee: $5; Prizes for top performers">
+      <h3>Poetry Slam</h3>
+      <p><strong>Date & Time:</strong> Jan 22, 2026, 7:00PM - 9:00PM</p>
+      <p>Bring your verses or come as an audience — prizes for top performers.</p>
+    </article>
+  </div>
+</section>
+
+ 
+<section class="gallery">
+  <h2>Gallery of Past Events</h2>
+  <div class="gallery-grid" aria-label="Past event photos">
+    <figure class="gallery-item">
+      <img src="gallery-events/gallery1.jpg" alt="Cozy book club meeting" />
+      <p>Bookclub Meeting August 2025</p>
+    </figure>
+    <figure class="gallery-item">
+      <img src="gallery-events/gallery2.jpg" alt="Charity Event" />
+      <p>Charity Event September 2025</p>
+    </figure>
+    <figure class="gallery-item">
+      <img src="gallery-events/gallery3.jpg" alt="Children's Storytime" />
+      <p>Children's Storytime October 2025</p>
+    </figure>
+    <figure class="gallery-item">
+      <img src="gallery-events/gallery4.jpg" alt="Microphone on stage" />
+      <p>Open Mic Night November 2025</p>
+    </figure>
+    <figure class="gallery-item">
+      <img src="gallery-events/gallery5.jpg" alt="Author Meet & Greet" />
+      <p>Author Meet & Greet October 2025</p>
+    </figure>
+    <figure class="gallery-item">
+      <img src="gallery-events/gallery6.jpg" alt="Poet performing on stage" />
+      <p>Poetry Slam September 2025</p>
+    </figure>
+  </div>
+</section>
+
+ 
+<section>
+  <h2>Book an Event Slot</h2>
+  <div class="form-panel">
+    <form id="booking-form" autocomplete="off">
+    <label for="name">Name *</label>
+    <input type="text" id="name" name="name" required placeholder="Your full name" />
+
+    <label for="contact">Contact Number *</label>
+    <input type="tel" id="contact" name="contact" required placeholder="e.g. +1234567890" pattern="\+?\d{7,15}" title="Enter a valid phone number" />
+
+    <label for="email">Email Address *</label>
+    <input type="email" id="email" name="email" required placeholder="you@example.com" />
+
+    <label for="datetime">Date & Time *</label>
+    <input type="datetime-local" id="datetime" name="datetime" required />
+
+    <label for="attendees">Number of Attendees *</label>
+    <input type="number" id="attendees" name="attendees" min="1" max="50" required />
+
+    <label for="event-type">Kind of Event *</label>
+    <select id="event-type" name="event-type" required>
+      <option value="" disabled selected>Select an event type</option>
+      <option value="Book Signing">Book Signing</option>
+      <option value="Charity Event">Charity Event</option>
+      <option value="Children's Storytime">Children's Storytime</option>
+      <option value="Bookswap Event">Bookswap Event</option>
+      <option value="Bookclub Meeting">Bookclub Meeting</option>
+      <option value="Themed Book Launch Party">Themed Book Launch Party</option>
+      <option value="Other">Other</option>
+    </select>
+    <div id="other-event-container">
+      <label for="other-event">Please specify *</label>
+      <input type="text" id="other-event" name="other-event" />
+    </div>
+
+    <label for="special-req">Special Requests</label>
+    <textarea id="special-req" name="special-req" placeholder="Any special requests or comments"></textarea>
+
+    <button type="submit">Confirm Booking</button>
+    </form>
+  </div>
+</section>
+
+ 
+<footer>
+  <div>
+    <h3>About Us</h3>
+    <p>We are a cozy cafe dedicated to book lovers and community events. Enjoy great coffee & warm ambience.</p>
+  </div>
+  <div>
+    <h3>Contact & Feedback</h3>
+    <p>Email: <a href="mailto:contact@quilliaevents.com">contact@quilliaevents.com</a></p>
+    <p>Phone: +123 456 7890</p>
+  </div>
+  <div>
+    <h3>Terms & Policies</h3>
+    <p><a href="#">Privacy Policy</a></p>
+    <p><a href="#">Terms of Service</a></p>
+  </div>
+</footer>
+
+ 
+<div id="modalOverlay" class="modal-overlay" aria-hidden="true">
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal-header">
+      <h3 id="modalTitle">Event Details</h3>
+      <button id="modalClose" class="modal-close" aria-label="Close modal">×</button>
+    </div>
+    <div id="modalBody" class="modal-body" tabindex="0">
+      
+    </div>
+  </div>
+</div>
+
+<script>
+  
+  (function () {
+  // Show/hide "Other" event type field
+  const eventTypeSelect = document.getElementById('event-type');
+  const otherEventContainer = document.getElementById('other-event-container');
+  const otherEventInput = document.getElementById('other-event');
+
+  if (eventTypeSelect) {
+    eventTypeSelect.addEventListener('change', () => {
+      if (eventTypeSelect.value === 'Other') {
+        otherEventContainer.style.display = 'block';
+        otherEventInput.setAttribute('required', 'required');
+      } else {
+        otherEventContainer.style.display = 'none';
+        otherEventInput.removeAttribute('required');
+        otherEventInput.value = '';
+      }
+    });
+  }
+
+  // Booking form submit
+  const bookingForm = document.getElementById('booking-form');
+  if (bookingForm) {
+    bookingForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      alert('Thank you for your booking! We will contact you soon.');
+      bookingForm.reset();
+      if (otherEventContainer) {
+        otherEventContainer.style.display = 'none';
+      }
+    });
+  }
+
+  // Modal elements
+  const modalOverlay = document.getElementById('modalOverlay');
+  const modalBody = document.getElementById('modalBody');
+  const modalClose = document.getElementById('modalClose');
+
+  function openModal(contentHtml) {
+    if (!modalOverlay || !modalBody) return;
+    modalBody.innerHTML = contentHtml;
+    modalOverlay.classList.add('open');
+    modalOverlay.setAttribute('aria-hidden', 'false');
+    setTimeout(() => {
+      modalBody.focus();
+    }, 50);
+  }
+
+  function closeModal() {
+    if (!modalOverlay || !modalBody) return;
+    modalOverlay.classList.remove('open');
+    modalOverlay.setAttribute('aria-hidden', 'true');
+    modalBody.innerHTML = '';
+  }
+
+  if (modalClose) {
+    modalClose.addEventListener('click', closeModal);
+  }
+
+  if (modalOverlay) {
+    modalOverlay.addEventListener('click', (e) => {
+      if (e.target === modalOverlay) {
+        closeModal();
+      }
+    });
+  }
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      closeModal();
+    }
+  });
+
+  // Escape HTML helper
+  function escapeHtml(str) {
+    return String(str)
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#39;');
+  }
+
+  // Clickable events -> modal
+  const events = document.querySelectorAll('.events-list .event');
+  events.forEach((el) => {
+    el.style.cursor = 'pointer';
+    el.addEventListener('click', () => {
+      const title = el.querySelector('h3')
+        ? el.querySelector('h3').textContent.trim()
+        : 'Event';
+      const paras = Array.from(el.querySelectorAll('p')).map((p) =>
+        p.innerHTML.trim()
+      );
+
+      let html = `<h4 style="margin-top:0">${escapeHtml(title)}</h4>`;
+      paras.forEach((p) => {
+        html += `<p>${p}</p>`;
+      });
+
+      const details = el.dataset.details;
+      if (details) {
+        const formatted = escapeHtml(details).replace(/\n/g, '<br>');
+        html += `<p><strong>More info:</strong><br>${formatted}</p>`;
+      }
+
+      openModal(html);
+    });
+  });
+
+  // Clickable gallery items -> modal
+  const galleryItems = document.querySelectorAll('.gallery-grid .gallery-item');
+  galleryItems.forEach((item) => {
+    item.style.cursor = 'pointer';
+    item.addEventListener('click', () => {
+      const img = item.querySelector('img');
+      const captionEl = item.querySelector('p');
+      const caption = captionEl ? captionEl.textContent.trim() : '';
+
+      let html = '';
+      if (img) {
+        html += `<img src="${img.src}" alt="${escapeHtml(img.alt)}">`;
+      }
+      if (caption) {
+        html += `<h4 style="margin-top:0">${escapeHtml(caption)}</h4>`;
+      }
+
+      openModal(html);
+    });
+  });
+})();
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quilla - Café & Bookstore</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Background Blur Element -->
+    <div class="background-blur"></div>
+    
+    <div class="overlay">
+        <nav>
+            <div class="nav-container">
+                <div class="logo">Quilla</div>
+                <ul class="nav-links">
+                    <li><a onclick="showPage('home')" class="active">Home</a></li>
+                    <li><a onclick="showPage('about')">About Us</a></li>
+                    <li><a onclick="showPage('menu')">Menu</a></li>
+                    <li><a onclick="showPage('catalog')">Book Catalog</a></li>
+                    <li><a onclick="showPage('events')">Events</a></li>
+                    <li><a onclick="showPage('membership')">Membership</a></li>
+                    <li><a onclick="showPage('merch')">Merch</a></li>
+                    <li><a onclick="showPage('signin')">Sign In</a></li>
+                </ul>
+            </div>
+        </nav>
+        <div class="container">
+            <!-- HOME PAGE -->
+            <div id="home" class="page active">
+                <div class="hero">
+                    <h1>Welcome to Quilla</h1>
+                    <p>Where great books meet exceptional coffee</p>
+                </div>
+                <div class="featured-section">
+                    <div class="featured-card">
+                        <h3>Drink of the Day</h3>
+                        <h2>Caramel Macchiato</h2>
+                        <p>Rich espresso with vanilla and caramel, topped with foamed milk</p>
+                    </div>
+                    <div class="featured-card">
+                        <h3>Book of the Day</h3>
+                        <h2>The Midnight Library</h2>
+                        <p>by Matt Haig - A tale of infinite possibilities and second chances</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- MEMBERSHIP PAGE -->
+            <div id="membership" class="page">
+                <div class="membership-hero">
+                    <h1>Join Our Community</h1>
+                    <p>Become a member and unlock exclusive benefits, discounts, and access to special events</p>
+                </div>
+                <div class="benefits-section">
+                    <h2>Member Benefits</h2>
+                    <div class="benefits-grid">
+                        <div class="benefit-card">
+                            <h3>Exclusive Discounts</h3>
+                            <p>Enjoy 10-20% off all beverages and 15% off all books every day</p>
+                        </div>
+                        <div class="benefit-card">
+                            <h3>Priority Booking</h3>
+                            <p>Get first access to book readings, author signings, and workshops</p>
+                        </div>
+                        <div class="benefit-card">
+                            <h3>Free Book of the Month</h3>
+                            <p>Receive a curated book selection every month from our staff picks</p>
+                        </div>
+                        <div class="benefit-card">
+                            <h3>Birthday Perks</h3>
+                            <p>Complimentary drink and dessert on your special day</p>
+                        </div>
+                        <div class="benefit-card">
+                            <h3>Reserved Seating</h3>
+                            <p>Access to members-only cozy reading nooks and study areas</p>
+                        </div>
+                        <div class="benefit-card">
+                            <h3>Monthly Newsletter</h3>
+                            <p>Exclusive content, reviews, and early announcements</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="plans-section">
+                    <h2>Subscription Plans</h2>
+                    <div class="plans-container">
+                        <div class="plan-card">
+                            <h3>Book Lover</h3>
+                            <div class="plan-price">₱199</div>
+                            <div class="plan-period">per month</div>
+                            <ul class="plan-features">
+                                <li>10% discount on all drinks</li>
+                                <li>15% discount on books</li>
+                                <li>Birthday perks</li>
+                                <li>Monthly newsletter</li>
+                                <li>Event notifications</li>
+                            </ul>
+                        </div>
+                        <div class="plan-card featured">
+                            <h3>Café Connoisseur</h3>
+                            <div class="plan-price">₱399</div>
+                            <div class="plan-period">per month</div>
+                            <ul class="plan-features">
+                                <li>20% discount on all drinks</li>
+                                <li>15% discount on books</li>
+                                <li>Free drink weekly</li>
+                                <li>Priority event booking</li>
+                                <li>Reserved seating access</li>
+                                <li>Birthday perks</li>
+                                <li>Monthly newsletter</li>
+                            </ul>
+                        </div>
+                        <div class="plan-card">
+                            <h3>Literary Elite</h3>
+                            <div class="plan-price">₱999</div>
+                            <div class="plan-period">per month</div>
+                            <ul class="plan-features">
+                                <li>20% discount on all drinks</li>
+                                <li>20% discount on books</li>
+                                <li>Free book of the month</li>
+                                <li>Unlimited drink upgrades</li>
+                                <li>Priority event booking</li>
+                                <li>VIP seating access</li>
+                                <li>Exclusive merch discount</li>
+                                <li>Birthday perks</li>
+                                <li>Bring a guest for free</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="signup-section">
+                    <h2>Sign Up for Membership</h2>
+                    <form id="membershipForm">
+                        <div class="form-group">
+                            <label for="fullName">Full Name</label>
+                            <input type="text" id="fullName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="plan">Select Plan</label>
+                            <select id="plan" required>
+                                <option value="">Choose a plan...</option>
+                                <option value="book-lover">Book Lover - ₱199/month</option>
+                                <option value="cafe-connoisseur">Café Connoisseur - ₱399/month</option>
+                                <option value="literary-elite">Literary Elite - ₱999/month</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn">Join Now</button>
+                    </form>
+                </div>
+            </div>
+            
+            <!-- OTHER PAGES (Placeholders) -->
+            <div id="about" class="page">
+                <h1 style="color: var(--dark-green);">About Us</h1>
+                <p>Coming soon: Meet our team, explore our story, and find us on the map!</p>
+            </div>
+            <div id="menu" class="page">
+                <h1 style="color: var(--dark-green);">Our Menu</h1>
+                <p>Coming soon: Delicious drinks and treats!</p>
+            </div>
+            <div id="catalog" class="page">
+                <h1 style="color: var(--dark-green);">Book Catalog</h1>
+                <p>Coming soon: Browse our collection by genre, new arrivals, and staff favorites!</p>
+            </div>
+            <div id="events" class="page">
+                <h1 style="color: var(--dark-green);">Events</h1>
+                <p>Coming soon: Book readings, workshops, and special events!</p>
+            </div>
+            <div id="merch" class="page">
+                <h1 style="color: var(--dark-green);">Merchandise</h1>
+                <p>Coming soon: T-shirts, mugs, and more!</p>
+            </div>
+            <div id="signin" class="page">
+                <h1 style="color: var(--dark-green);">Sign In</h1>
+                <p>Coming soon: Member login and registration!</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Confirmation Modal -->
+    <div id="confirmationModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="modal-icon">?</div>
+                <h2>Confirm Registration</h2>
+            </div>
+            <div class="modal-body">
+                <p>Are you sure you want to register for membership?</p>
+                <p class="confirmation-details"></p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" onclick="closeConfirmationModal()">Cancel</button>
+                <button class="btn btn-primary" onclick="confirmRegistration()">Yes, Register</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Success Popup Modal -->
+    <div id="successModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="modal-icon">✓</div>
+                <h2>Registration Successful!</h2>
+            </div>
+            <div class="modal-body">
+                <p>Welcome to Quilla! Check your email for membership details.</p>
+                <p>Your membership has been activated with the selected plan.</p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" onclick="closeModal()">Continue</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

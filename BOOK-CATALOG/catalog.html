@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Book Catalog</title>
+  <link rel="stylesheet" href="catalog.css" />
+</head>
+<body>
+
+  <!-- NAVIGATION BAR -->
+  <nav class="navbar">
+    <h1 class="brand">QUILLIA</h1>
+
+    <div class="nav-right">
+      <ul class="nav-links">
+        <li><a href="#">Homepage</a></li>
+        <li><a href="#">About Us</a></li>
+        <li><a href="#">Menu</a></li>
+        <li><a href="#">Book Catalog</a></li>
+        <li><a href="#">Events</a></li>
+        <li><a href="#">Membership</a></li>
+        <li><a href="#">Merch</a></li>
+      </ul>
+
+      <div class="user-icon">👤</div>
+    </div>
+  </nav>
+
+  <!-- VIDEO BACKGROUND -->
+  <video autoplay muted loop id="bg-video">
+    <source src="background.mp4" type="video/mp4">
+  </video>
+
+  <header>
+    <h1>BOOK CATALOG</h1>
+  </header>
+
+  <main>
+
+    <!-- NEW ARRIVALS -->
+    <section class="section">
+      <div class="section-header">
+        <h2>NEW ARRIVALS</h2>
+        <button class="view-all-btn" data-section="newArrivals">View All</button>
+      </div>
+      <div class="scroll-wrapper">
+        <div class="arrow left-arrow" data-target="newArrivalsContainer">&#10094;</div>
+        <div class="scroll-container" id="newArrivalsContainer"></div>
+        <div class="arrow right-arrow" data-target="newArrivalsContainer">&#10095;</div>
+      </div>
+    </section>
+
+    <!-- BOOKS IN STOCK -->
+    <section class="section">
+      <div class="section-header">
+        <h2>BOOKS IN STOCK</h2>
+        <button class="view-all-btn" data-section="booksInStock">View All</button>
+      </div>
+      <div class="scroll-wrapper">
+        <div class="arrow left-arrow" data-target="booksInStockContainer">&#10094;</div>
+        <div class="scroll-container" id="booksInStockContainer"></div>
+        <div class="arrow right-arrow" data-target="booksInStockContainer">&#10095;</div>
+      </div>
+    </section>
+
+    <!-- CUSTOMER FAVORITES -->
+    <section class="section">
+      <div class="section-header">
+        <h2>CUSTOMER FAVORITES</h2>
+        <button class="view-all-btn" data-section="customerFavorites">View All</button>
+      </div>
+      <div class="scroll-wrapper">
+        <div class="arrow left-arrow" data-target="customerFavoritesContainer">&#10094;</div>
+        <div class="scroll-container" id="customerFavoritesContainer"></div>
+        <div class="arrow right-arrow" data-target="customerFavoritesContainer">&#10095;</div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- BOOK DETAIL MODAL -->
+  <div id="bookModal" class="modal">
+    <div class="book-modal-content">
+      <div class="book-modal-body">
+        <div class="book-modal-left">
+          <img class="modal-img" src="" alt="Book Cover">
+        </div>
+        <div class="book-modal-right">
+          <h2 class="modal-title">Title</h2>
+          <p class="modal-author">Author</p>
+          <p class="modal-synopsis">Synopsis</p>
+          <p class="modal-genre">Genre</p>
+          <p class="modal-date">Release Date</p>
+          <div class="book-rating"></div>
+        </div>
+      </div>
+
+      <div class="feedback-bubbles"></div>
+      <span class="close-btn">&times;</span>
+    </div>
+  </div>
+
+  <!-- VIEW ALL MODAL -->
+  <div class="modal" id="viewAllModal">
+    <div class="modal-content">
+      <div class="viewall-top">
+        <input type="text" id="searchInput" placeholder="Search books...">
+        <span class="close-btn">&times;</span>
+      </div>
+
+  	  <!-- GENRES -->
+      <div class="filter-genre"></div>
+
+  	  <!-- SORT + DROPDOWN -->
+      <div class="viewall-controls">
+        <div>Sort:</div>
+        <select id="sortSelectViewAll">
+		  <option value="default">Default</option>
+		  <option value="title-asc">Title A-Z</option>
+		  <option value="title-desc">Title Z-A</option>
+		  <option value="date-asc">Oldest</option>
+		  <option value="date-desc">Newest</option>
+		</select>
+      </div>
+
+      <!-- BOOK LIST -->
+      <div class="viewall-container" id="viewAllContainer">
+        <p id="noBooksMessage" class="no-books">No books found.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- FEEDBACK MODAL -->
+  <div id="feedbackModal" class="modal" style="display:none;">
+    <div class="modal-content feedback-modal-content">
+      <span class="close-feedback">&times;</span>
+      <h3>All Reviews</h3>
+      <div class="feedback-modal-body all-reviews"></div>
+    </div>
+  </div>
+
+   <!-- HOW TO BORROW & RATE BOOKS -->
+   <section class="bottom-info">
+
+     <div class="info-left">
+       <div class="info-box">
+         <h2>HOW TO BORROW BOOKS</h2>
+         <ul>
+           <li>Order anything from the café and keep your receipt.</li>
+           <li>Show the receipt to the Book Keeper at the book corner.</li>
+           <li>Choose a book and write your name in the logbook.</li>
+           <li>Receive a bookmark as proof of borrowing.</li>
+           <li>Books are for in-store reading only (1 book at a time).</li>
+         </ul>
+       </div>
+
+       <div class="info-box">
+         <h2>HOW TO RATE BOOKS</h2>
+         <ul>
+           <li>Return the book to the Book Keeper.</li>
+           <li>Get a mini rating card (stars 1–5).</li>
+           <li>Rate the book; optional small review.</li>
+           <li>Staff encodes ratings to update the online catalog.</li>
+         </ul>
+       </div>
+     </div>
+
+     <div class="info-right">
+       <video src="cute.mp4" autoplay muted loop></video>
+     </div>
+
+   </section>
+
+  <script src="catalog.js"></script>
+</body>
+</html>

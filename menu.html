@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>QUILLIA</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    <!-- Favicon -->
+    <link href="img/quillia.png" rel="icon">
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet"> 
+
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="css/style.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <!-- Navbar Start -->
+    <div class="container-fluid p-0 nav-bar">
+        <nav class="navbar navbar-expand-lg bg-none navbar-dark py-3">
+            <a href="index.html" class="navbar-brand px-lg-4 m-0">
+                <h1 class="m-0 display-4 text-uppercase text-white">QUILLIA</h1>
+            </a>
+            <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+                <div class="navbar-nav ml-auto p-4">
+                    <a href="index.html" class="nav-item nav-link">Home</a>
+                    <a href="about.html" class="nav-item nav-link">About</a>
+                    <a href="service.html" class="nav-item nav-link">Book Catalog</a>
+                    <a href="menu.html" class="nav-item nav-link active">Menu</a>
+                    <a href="subscription.html" class="nav-item nav-link">Subscription</a>
+                    <a href="reservation.html" class="nav-item nav-link">Reservation</a>
+                    <a href="contact.html" class="nav-item nav-link">Contact</a>
+                    <div class="nav-item dropdown">
+                        <a href="#" id="profileDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle nav-profile" title="Profile"><i class="fa fa-user"></i></a>
+                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="profileDropdown">
+                            <a class="dropdown-item" href="login.html">Sign out</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </div>
+    <!-- Navbar End -->
+
+    <!-- Page Header Start -->
+    <div class="container-fluid page-header mb-5 position-relative overlay-bottom">
+        <div class="d-flex flex-column align-items-center justify-content-center pt-0 pt-lg-5" style="min-height: 400px">
+            <h1 class="display-4 mb-3 mt-0 mt-lg-5 text-white text-uppercase">Menu</h1>
+            <div class="d-inline-flex mb-lg-5">
+                <p class="m-0 text-white"><a class="text-white" href="index.html">Home</a></p>
+                <p class="m-0 text-white px-2">/</p>
+                <p class="m-0 text-white">Menu</p>
+            </div>
+        </div>
+    </div>
+    <!-- Page Header End -->
+
+    <!-- Menu Start -->
+    <div class="container-fluid pt-5">
+        <div class="container">
+            <div class="section-title">
+                <h4 class="text-primary text-uppercase" style="letter-spacing: 5px;">Menu & Pricing</h4>
+                <h1 class="display-4">Competitive Pricing</h1>
+            </div>
+            <div class="row">
+                <div class="col-lg-6">
+                    <h1 class="mb-5">Hot Coffee</h1>
+                    <div class="row align-items-center mb-5">
+                        <div class="col-4 col-sm-3">
+                            <img class="w-100 rounded-circle mb-3 mb-sm-0" src="img/menu-1.jpg" alt="">
+                            <h5 class="menu-price">$5</h5>
+                        </div>
+                        <div class="col-8 col-sm-9">
+                            <h4>Black Coffee</h4>
+                            <p class="m-0">Rich and bold espresso served pure, perfect for coffee enthusiasts.</p>
+                            <button class="btn btn-primary font-weight-bold py-2 px-4 mt-2 add-to-cart"
+                                data-name="Black Coffee (Hot)"
+                                data-price="5">
+                                Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                    <div class="row align-items-center mb-5">
+                        <div class="col-4 col-sm-3">
+                            <img class="w-100 rounded-circle mb-3 mb-sm-0" src="img/menu-2.jpg" alt="">
+                            <h5 class="menu-price">$7</h5>
+                        </div>
+                        <div class="col-8 col-sm-9">
+                            <h4>Chocolate Coffee</h4>
+                            <p class="m-0">Smooth espresso blended with rich chocolate for a decadent treat.</p>
+                            <button class="btn btn-primary font-weight-bold py-2 px-4 mt-2 add-to-cart"
+                                data-name="Chocolate Coffee (Hot)"
+                                data-price="7">
+                                Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                    <div class="row align-items-center mb-5">
+                        <div class="col-4 col-sm-3">
+                            <img class="w-100 rounded-circle mb-3 mb-sm-0" src="img/menu-3.jpg" alt="">
+                            <h5 class="menu-price">$9</h5>
+                        </div>
+                        <div class="col-8 col-sm-9">
+                            <h4>Coffee With Milk</h4>
+                            <p class="m-0">Creamy steamed milk paired with our signature espresso blend.</p>
+                            <button class="btn btn-primary font-weight-bold py-2 px-4 mt-2 add-to-cart"
+                                data-name="Coffee With Milk (Hot)"
+                                data-price="9">
+                                Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <h1 class="mb-5">Cold Coffee</h1>
+                    <div class="row align-items-center mb-5">
+                        <div class="col-4 col-sm-3">
+                            <img class="w-100 rounded-circle mb-3 mb-sm-0" src="img/menu-1.jpg" alt="">
+                            <h5 class="menu-price">$5</h5>
+                        </div>
+                        <div class="col-8 col-sm-9">
+                            <h4>Black Coffee</h4>
+                            <p class="m-0">Chilled espresso served over ice, refreshing and strong.</p>
+                            <button class="btn btn-primary font-weight-bold py-2 px-4 mt-2 add-to-cart"
+                                data-name="Black Coffee (Cold)"
+                                data-price="5">
+                                Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                    <div class="row align-items-center mb-5">
+                        <div class="col-4 col-sm-3">
+                            <img class="w-100 rounded-circle mb-3 mb-sm-0" src="img/menu-2.jpg" alt="">
+                            <h5 class="menu-price">$7</h5>
+                        </div>
+                        <div class="col-8 col-sm-9">
+                            <h4>Chocolate Coffee</h4>
+                            <p class="m-0">Iced mocha with rich chocolate syrup and cold espresso.</p>
+                            <button class="btn btn-primary font-weight-bold py-2 px-4 mt-2 add-to-cart"
+                                data-name="Chocolate Coffee (Cold)"
+                                data-price="7">
+                                Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                    <div class="row align-items-center mb-5">
+                        <div class="col-4 col-sm-3">
+                            <img class="w-100 rounded-circle mb-3 mb-sm-0" src="img/menu-3.jpg" alt="">
+                            <h5 class="menu-price">$9</h5>
+                        </div>
+                        <div class="col-8 col-sm-9">
+                            <h4>Coffee With Milk</h4>
+                            <p class="m-0">Iced latte with cold milk and our signature espresso blend.</p>
+                            <button class="btn btn-primary font-weight-bold py-2 px-4 mt-2 add-to-cart"
+                                data-name="Coffee With Milk (Cold)"
+                                data-price="9">
+                                Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Menu End -->
+
+    <!-- Floating Cart Button -->
+    <div id="floating-cart-btn">
+        <i class="fa fa-shopping-cart"></i> <span id="cart-count">0</span>
+    </div>
+
+    <!-- CART MODAL -->
+    <div class="modal fade" id="cartModal" tabindex="-1" role="dialog" aria-labelledby="cartModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="cartModalLabel">Your Cart</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Item</th>
+                                <th>Qty</th>
+                                <th>Price</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody id="cart-items"></tbody>
+                    </table>
+                    <h4 class="text-right mt-3">Total: $<span id="cart-total">0</span></h4>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" id="checkout-btn">Checkout</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End of CART MODAL -->
+
+    <!-- Checkout Success Modal -->
+    <div class="modal fade" id="successModal" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content" style="background-color: #4D2D18; color: #CABA9C; text-align: center; border-radius: 15px;">
+                <div class="modal-body py-5">
+                    <div class="success-icon mb-4">
+                        <i class="fa fa-check-circle" style="font-size: 5rem; color: #28a745;"></i>
+                    </div>
+                    <h2 class="mb-3" style="color: #CABA9C;">Order Confirmed!</h2>
+                    <p class="mb-4" style="color: #CABA9C; font-size: 1.1rem;">Your order has been placed successfully.</p>
+                    <h4 class="mb-4" style="color: #CABA9C;">Total: $<span id="success-total">0.00</span></h4>
+                    <p style="color: #CABA9C; opacity: 0.8;">Thank you for your order!</p>
+                    <button type="button" class="btn btn-primary mt-3 px-5 py-2" data-dismiss="modal" style="background-color: #4C6444; border: none; font-weight: bold;">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Success Modal -->
+
+
+    <!-- Footer Start -->
+    <div class="container-fluid footer text-white mt-5 pt-5 px-0 position-relative overlay-top">
+        <div class="row mx-0 pt-5 px-sm-3 px-lg-5 mt-4">
+            <div class="col-lg-3 col-md-6 mb-5">
+                <h4 class="text-white text-uppercase mb-4" style="letter-spacing: 3px;">Get In Touch</h4>
+                <p><i class="fa fa-map-marker-alt mr-2"></i>Mambaling, Cebu City</p>
+                <p><i class="fa fa-phone-alt mr-2"></i>+63 991 647 6873</p>
+                <p class="m-0"><i class="fa fa-envelope mr-2"></i>info@quillia.com</p>
+            </div>
+            <div class="col-lg-3 col-md-6 mb-5">
+                <h4 class="text-white text-uppercase mb-4" style="letter-spacing: 3px;">Follow Us</h4>
+                <p>Like and Follow our Social Media </p>
+                <div class="d-flex justify-content-start">
+                    <a class="btn btn-lg btn-outline-light btn-lg-square mr-2" href="#"><i class="fab fa-twitter"></i></a>
+                    <a class="btn btn-lg btn-outline-light btn-lg-square mr-2" href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a class="btn btn-lg btn-outline-light btn-lg-square mr-2" href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a class="btn btn-lg btn-outline-light btn-lg-square" href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 mb-5">
+                <h4 class="text-white text-uppercase mb-4" style="letter-spacing: 3px;">Open Hours</h4>
+                <div>
+                    <h6 class="text-white text-uppercase">Monday - Friday</h6>
+                    <p>8.00 AM - 8.00 PM</p>
+                    <h6 class="text-white text-uppercase">Saturday - Sunday</h6>
+                    <p>1.00 PM - 5.00 PM</p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 mb-5">
+                <h4 class="text-white text-uppercase mb-4" style="letter-spacing: 3px;">Newsletter</h4>
+                <p>Sign up for news and updates</p>
+                <div class="w-100">
+                    <div class="input-group">
+                        <input type="text" class="form-control border-light" style="padding: 25px;" placeholder="Your Email">
+                        <div class="input-group-append">
+                            <button class="btn btn-primary font-weight-bold px-3">Sign Up</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid text-center text-white border-top mt-4 py-4 px-sm-3 px-md-5" style="border-color: rgba(256, 256, 256, .1) !important;">
+            <p class="mb-2 text-white">Copyright &copy; <a class="font-weight-bold" href="#">Quillia</a>. All Rights Reserved.</a></p>
+        </div>
+    </div>
+    <!-- Footer End -->
+
+    <!-- Back to Top -->
+    <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="fa fa-angle-double-up"></i></a>
+
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/waypoints/waypoints.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="lib/tempusdominus/js/moment.min.js"></script>
+    <script src="lib/tempusdominus/js/moment-timezone.min.js"></script>
+    <script src="lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
+
+    <!-- Template Javascript -->
+    <script src="js/main.js"></script>
+    
+    <!-- Cart Functionality -->
+    <script>
+        $(document).ready(function() {
+            // Load cart from localStorage or initialize empty
+            let cart = JSON.parse(localStorage.getItem('quilliaCart')) || [];
+
+            // Save cart to localStorage
+            function saveCart() {
+                localStorage.setItem('quilliaCart', JSON.stringify(cart));
+            }
+
+            // Initialize on page load
+            updateCartCount();
+
+            // Add to cart button click
+            $('.add-to-cart').on('click', function() {
+                const name = $(this).data('name');
+                const price = parseFloat($(this).data('price'));
+                
+                // Check if item already exists in cart
+                const existingItem = cart.find(item => item.name === name);
+                
+                if (existingItem) {
+                    existingItem.qty += 1;
+                } else {
+                    cart.push({ name: name, price: price, qty: 1 });
+                }
+                
+                saveCart();
+                updateCartCount();
+                updateCartDisplay();
+                
+                // Show brief notification
+                showNotification(name + ' added to cart!');
+            });
+
+            // Update cart count badge
+            function updateCartCount() {
+                const totalItems = cart.reduce((sum, item) => sum + item.qty, 0);
+                const $cartCount = $('#cart-count');
+                $cartCount.text(totalItems);
+                if (totalItems > 0) {
+                    $cartCount.css('display', 'flex');
+                } else {
+                    $cartCount.hide();
+                }
+            }
+
+            // Update cart modal display
+            function updateCartDisplay() {
+                const $cartItems = $('#cart-items');
+                $cartItems.empty();
+                
+                if (cart.length === 0) {
+                    $cartItems.append('<tr><td colspan="4" class="text-center">Your cart is empty</td></tr>');
+                    $('#cart-total').text('0');
+                    return;
+                }
+                
+                let total = 0;
+                cart.forEach((item, index) => {
+                    const itemTotal = item.price * item.qty;
+                    total += itemTotal;
+                    
+                    $cartItems.append(`
+                        <tr>
+                            <td>${item.name}</td>
+                            <td>
+                                <div class="d-flex align-items-center">
+                                    <button class="btn btn-sm btn-outline-light qty-btn" data-index="${index}" data-action="decrease">-</button>
+                                    <span class="mx-2">${item.qty}</span>
+                                    <button class="btn btn-sm btn-outline-light qty-btn" data-index="${index}" data-action="increase">+</button>
+                                </div>
+                            </td>
+                            <td>$${itemTotal.toFixed(2)}</td>
+                            <td>
+                                <button class="btn btn-sm btn-danger remove-item" data-index="${index}">
+                                    <i class="fa fa-trash"></i>
+                                </button>
+                            </td>
+                        </tr>
+                    `);
+                });
+                
+                $('#cart-total').text(total.toFixed(2));
+            }
+
+            // Floating cart button click - open modal
+            $(document).on('click', '#floating-cart-btn', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                updateCartDisplay();
+                $('#cartModal').modal('show');
+            });
+
+            // Quantity buttons (increase/decrease)
+            $(document).on('click', '.qty-btn', function() {
+                const index = $(this).data('index');
+                const action = $(this).data('action');
+                
+                if (action === 'increase') {
+                    cart[index].qty += 1;
+                } else if (action === 'decrease') {
+                    cart[index].qty -= 1;
+                    if (cart[index].qty <= 0) {
+                        cart.splice(index, 1);
+                    }
+                }
+                
+                saveCart();
+                updateCartCount();
+                updateCartDisplay();
+            });
+
+            // Remove item from cart
+            $(document).on('click', '.remove-item', function() {
+                const index = $(this).data('index');
+                cart.splice(index, 1);
+                saveCart();
+                updateCartCount();
+                updateCartDisplay();
+            });
+
+            // Checkout button
+            $('#checkout-btn').on('click', function() {
+                if (cart.length === 0) {
+                    alert('Your cart is empty!');
+                    return;
+                }
+                
+                const total = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
+                
+                // Hide cart modal
+                $('#cartModal').modal('hide');
+                
+                // Show success modal after cart closes
+                setTimeout(function() {
+                    $('#success-total').text(total.toFixed(2));
+                    $('#successModal').modal('show');
+                }, 300);
+                
+                // Clear cart
+                cart = [];
+                saveCart();
+                updateCartCount();
+                updateCartDisplay();
+            });
+
+            // Show notification
+            function showNotification(message) {
+                const $notification = $('<div class="cart-notification">' + message + '</div>');
+                $('body').append($notification);
+                
+                setTimeout(function() {
+                    $notification.addClass('show');
+                }, 10);
+                
+                setTimeout(function() {
+                    $notification.removeClass('show');
+                    setTimeout(function() {
+                        $notification.remove();
+                    }, 300);
+                }, 2000);
+            }
+        });
+    </script>
+    
+    <style>
+        
+        /* Floating Cart Button */
+        #floating-cart-btn {
+            position: fixed;
+            bottom: 100px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background-color: #4C6444;
+            color: #CABA9C;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            z-index: 998;
+        }
+        
+        #floating-cart-btn:hover {
+            background-color: #102820;
+        }
+        
+        #floating-cart-btn i {
+            font-size: 1.5rem;
+            pointer-events: none;
+        }
+        
+        #floating-cart-btn #cart-count {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background-color: #dc3545;
+            color: white;
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            pointer-events: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            line-height: 1;
+        }
+        
+        /* Cart Notification */
+        .cart-notification {
+            position: fixed;
+            bottom: 170px;
+            right: 30px;
+            background-color: #4C6444;
+            color: #CABA9C;
+            padding: 12px 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            z-index: 1000;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.3s ease;
+        }
+        
+        .cart-notification.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Cart Modal Styling */
+        #cartModal {
+            z-index: 99999;
+            overflow-y: auto;
+        }
+        
+        #cartModal .modal-dialog {
+            z-index: 100000;
+            margin: 30px auto;
+            max-width: 700px;
+        }
+        
+        #cartModal .modal-content {
+            background-color: #4D2D18;
+            color: #CABA9C;
+            max-height: 90vh;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        /* Prevent body scroll when modal is open */
+        body.modal-open {
+            overflow: hidden;
+        }
+        
+        #cartModal .modal-header {
+            background-color: #102820;
+            color: #CABA9C;
+            border-bottom: 1px solid rgba(202,186,156,0.3);
+        }
+        
+        #cartModal .modal-header {
+            flex-shrink: 0;
+        }
+        
+        #cartModal .modal-header .modal-title {
+            color: #CABA9C !important;
+            font-weight: bold;
+        }
+        
+        #cartModal .modal-body {
+            background-color: #4D2D18;
+            max-height: 50vh;
+            overflow-y: auto;
+            overflow-x: hidden;
+            flex-shrink: 1;
+        }
+        
+        #cartModal .modal-footer {
+            flex-shrink: 0;
+        }
+        
+        /* Custom Scrollbar for Modal */
+        #cartModal .modal-body::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        #cartModal .modal-body::-webkit-scrollbar-track {
+            background: rgba(202,186,156,0.1);
+            border-radius: 10px;
+        }
+        
+        #cartModal .modal-body::-webkit-scrollbar-thumb {
+            background: #CABA9C;
+            border-radius: 10px;
+        }
+        
+        #cartModal .modal-body::-webkit-scrollbar-thumb:hover {
+            background: #DA9F5B;
+        }
+        
+        #cartModal .modal-footer {
+            background-color: #4D2D18;
+            border-top: 1px solid rgba(202,186,156,0.3);
+        }
+        
+        #cartModal .close {
+            color: #CABA9C;
+            opacity: 1;
+        }
+        
+        #cartModal .table {
+            color: #fff;
+            margin-bottom: 0;
+        }
+        
+        #cartModal .table thead th {
+            color: #CABA9C;
+            border-color: rgba(202,186,156,0.2);
+            font-weight: bold;
+        }
+        
+        #cartModal .table tbody td {
+            color: #CABA9C;
+            border-color: rgba(202,186,156,0.2);
+        }
+        
+        #cartModal h4 {
+            color: #CABA9C !important;
+            font-weight: bold;
+        }
+        
+        #cartModal .btn-outline-light {
+            color: #CABA9C;
+            border-color: #CABA9C;
+        }
+        
+        #cartModal .btn-outline-light:hover {
+            background-color: #CABA9C;
+            color: #4D2D18;
+        }
+        
+        /* Success Modal Animation */
+        #successModal .success-icon i {
+            animation: successPop 0.5s ease-out;
+        }
+        
+        @keyframes successPop {
+            0% {
+                transform: scale(0);
+                opacity: 0;
+            }
+            50% {
+                transform: scale(1.2);
+            }
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+        
+        #successModal .modal-content {
+            animation: slideUp 0.3s ease-out;
+        }
+        
+        @keyframes slideUp {
+            from {
+                transform: translateY(50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+        
+        /* Mobile Navigation */
+        @media (max-width: 991.98px) {
+            .navbar-collapse {
+                background-color: #33211D;
+                margin-top: 10px;
+                padding: 10px 0;
+                border-radius: 8px;
+            }
+            
+            .navbar-collapse .nav-item {
+                border-bottom: 1px solid rgba(202,186,156,0.1);
+            }
+            
+            .navbar-toggler {
+                border: 2px solid rgba(202,186,156,0.5);
+            }
+        }
+    </style>
+</body>
+
+</html>
