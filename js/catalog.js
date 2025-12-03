@@ -230,8 +230,8 @@ const books = [
     author: "Charlotte Brontë",
     genre: ["Gothic", "Romance", "Bildungsroman"],
     releaseDate: "1847-10-16",
-    image: "https://static.wikia.nocookie.net/classical-literature/images/8/87/61c1BiBgvdL.jpg/revision/latest?cb=20190526154645",
-    synopsis: "Jane Eyre, an orphaned and strong‑willed governess, finds work at Thornfield Hall, where she falls in love with the brooding Mr. Rochester. But secrets haunt Thornfield, and Jane must decide how much she’s willing to sacrifice for love, dignity, and independence.",
+    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9b/Jane_Eyre_title_page.jpg/400px-Jane_Eyre_title_page.jpg",
+    synopsis: "Jane Eyre, an orphaned and strong‑willed governess, finds work at Thornfield Hall, where she falls in love with the brooding Mr. Rochester. But secrets haunt Thornfield, and Jane must decide how much she's willing to sacrifice for love, dignity, and independence.",
     rating: {
       average: 4.6,
       count: 29,
