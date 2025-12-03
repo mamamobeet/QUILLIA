@@ -22,6 +22,42 @@
 
     <!-- Customized Bootstrap Stylesheet -->
     <link href="css/style.min.css" rel="stylesheet">
+    
+    <style>
+        /* Carousel Video Sizing */
+        .carousel-video {
+            width: 100%;
+            height: 600px;
+            object-fit: cover;
+            object-position: center;
+        }
+        
+        @media (max-width: 992px) {
+            .carousel-video {
+                height: 450px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .carousel-video {
+                height: 350px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .carousel-video {
+                height: 280px;
+            }
+        }
+        
+        /* White text for form inputs */
+        .bg-transparent.border-primary {
+            color: white !important;
+        }
+        .bg-transparent.border-primary::placeholder {
+            color: rgba(255, 255, 255, 0.7) !important;
+        }
+    </style>
 </head>
 
 <body>
@@ -36,8 +72,8 @@
             </button>
             <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                 <div class="navbar-nav ml-auto p-4">
-                    <a href="home.html" class="nav-item nav-link">Home</a>
-                    <a href="about.html" class="nav-item nav-link active">About</a>
+                    <a href="home.html" class="nav-item nav-link active">Home</a>
+                    <a href="about.html" class="nav-item nav-link">About</a>
                     <a href="service.html" class="nav-item nav-link">Book Catalog</a>
                     <a href="menu.html" class="nav-item nav-link">Menu</a>
                     <a href="subscription.html" class="nav-item nav-link">Subscription</a>
@@ -55,19 +91,36 @@
     </div>
     <!-- Navbar End -->
 
-
-    <!-- Page Header Start -->
-    <div class="container-fluid page-header mb-5 position-relative overlay-bottom">
-        <div class="d-flex flex-column align-items-center justify-content-center pt-0 pt-lg-5" style="min-height: 400px">
-            <h1 class="display-4 mb-3 mt-0 mt-lg-5 text-white text-uppercase">About Us</h1>
-            <div class="d-inline-flex mb-lg-5">
-                <p class="m-0 text-white"><a class="text-white" href="">Home</a></p>
-                <p class="m-0 text-white px-2">/</p>
-                <p class="m-0 text-white">About Us</p>
+    <!-- Carousel Start -->
+    <div class="container-fluid p-0 mb-5">
+        <div id="blog-carousel" class="carousel page-header slide" data-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <video autoplay muted loop playsinline class="carousel-video" src="img/carousel-1.mp4" alt="Coffee"></video>
+                    <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
+                        <h2 class="text-primary font-weight-medium m-0">Book in hand,</h2>
+                        <h1 class="display-1 text-white m-0">Coffee in cup,</h1>
+                        <h2 class="text-white m-0">Peace in heart.</h2>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <video autoplay muted loop playsinline class="carousel-video" src="img/carousel-2.mp4" alt="Reading"></video>
+                    <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
+                        <h2 class="text-primary font-weight-medium m-0">Sip the coffee,</h2>
+                        <h1 class="display-1 text-white m-0">Turn the page,</h1>
+                        <h2 class="text-white m-0">Enjoy the moment.</h2>
+                    </div>
+                </div>
             </div>
+            <a class="carousel-control-prev" href="#blog-carousel" data-slide="prev">
+                <span class="carousel-control-prev-icon"></span>
+            </a>
+            <a class="carousel-control-next" href="#blog-carousel" data-slide="next">
+                <span class="carousel-control-next-icon"></span>
+            </a>
         </div>
     </div>
-    <!-- Page Header End -->
+    <!-- Carousel End -->
 
 
     <!-- About Start -->
@@ -95,151 +148,108 @@
                     <h5 class="mb-3"><i class="fa fa-check text-primary mr-3"></i>comfort,</h5>
                     <h5 class="mb-3"><i class="fa fa-check text-primary mr-3"></i>learning,</h5>
                     <h5 class="mb-3"><i class="fa fa-check text-primary mr-3"></i>and meaningful human connections.</h5>
+                    <a href="about.html" class="btn btn-primary font-weight-bold py-2 px-4 mt-2">Learn More</a>
                 </div>
             </div>
         </div>
     </div>
     <!-- About End -->
-     
-    <!-- Intro Start -->
+
+    <!-- Reservation Start -->
     <div class="container-fluid reservation position-relative overlay-top overlay-bottom my-5">
         <div class="container">
             <div class="row align-items-center">
-                <div class="my-5 my-lg-0">
+                <div class="col-lg-6 my-5 my-lg-0">
                     <div class="p-5">
                         <div class="mb-4">
-                            <h1 class="display-3 text-primary">QUILLIA</h1>
-                            <h1 class="text-white">- a tree with glossy leaves and terminal white flowers</h1>
+                            <h1 class="display-3 text-primary">30% OFF</h1>
+                            <h1 class="text-white">For Online Reservation</h1>
                         </div>
-                        <p class="text-white">Come visit us! We can give you...</p>
+                        <p class="text-white">Book your event in advance and enjoy a smooth, hassle-free coffee and reading experience</p>
                         <ul class="list-inline text-white m-0">
-                            <li class="py-2"><i class="fa fa-check text-primary mr-3"></i>Coffee to function</li>
-                            <li class="py-2"><i class="fa fa-check text-primary mr-3"></i>Books to escape</li>
-                            <li class="py-2"><i class="fa fa-check text-primary mr-3"></i>Breathing room for comfort</li>
+                            <li class="py-2"><i class="fa fa-check text-primary mr-3"></i>Reserve your preferred date and time instantly</li>
+                            <li class="py-2"><i class="fa fa-check text-primary mr-3"></i>Avoid wait times during busy hours</li>
+                            <li class="py-2"><i class="fa fa-check text-primary mr-3"></i>Get priority seating for groups or special meetups</li>
                         </ul>
                     </div>
                 </div>
-            </div>
-        </div>
-    </div>
-    <!-- Intro End -->
-
-    <!-- Testimonial Start -->
-    <div class="container-fluid py-5">
-        <div class="container">
-            <div class="section-title">
-                <h4 class="text-primary text-uppercase" style="letter-spacing: 5px;">Meet the Team</h4>
-                <h1 class="display-4">The People Behind Quillia</h1>
-            </div>
-            <div class="owl-carousel testimonial-carousel">
-                <div class="testimonial-item">
-                    <div class="d-flex align-items-center mb-3">
-                        <img class="img-fluid" src="img/ancheta.jpg" alt="">
-                        <div class="ml-3">
-                            <h4>Bien Ancheta</h4>
-                            <i>Barista</i>
-                        </div>
+                <div class="col-lg-6">
+                    <div class="text-center p-5" style="background: rgba(51, 33, 29, .8);">
+                        <h1 class="text-white mb-4 mt-5">Book Your Event</h1>
+                        <form class="mb-5" action="https://formsubmit.co/bien.2309.blank@gmail.com" method="POST">
+                            <!-- FormSubmit Configuration -->
+                            <input type="hidden" name="_subject" value="New Event Booking - Quillia">
+                            <input type="hidden" name="_captcha" value="false">
+                            <input type="hidden" name="_template" value="table">
+                            <input type="text" name="_honey" style="display:none">
+                            
+                            <div class="form-group">
+                                <input type="text" name="name" class="form-control bg-transparent border-primary p-4" placeholder="Name"
+                                    required="required" />
+                            </div>
+                            <div class="form-group">
+                                <input type="email" name="email" class="form-control bg-transparent border-primary p-4" placeholder="Email"
+                                    required="required" />
+                            </div>
+                            <div class="form-group">
+                                <input type="date" name="date" class="form-control bg-transparent border-primary p-4" placeholder="Date" required="required" />
+                            </div>
+                            <div class="form-group">
+                                <input type="time" name="time" class="form-control bg-transparent border-primary p-4" placeholder="Time" required="required" />
+                            </div>
+                            <div class="form-group">
+                                <input type="number" name="number_of_people" class="form-control bg-transparent border-primary p-4" placeholder="Number of People" min="1" required="required" />
+                            </div>
+                            <div class="form-group">
+                                <textarea name="special_requests" class="form-control bg-transparent border-primary p-4" rows="3" placeholder="Special Requests (Optional)"></textarea>
+                            </div>
+                            <div>
+                                <button class="btn btn-primary btn-block font-weight-bold py-3" type="submit">Book Now</button>
+                            </div>
+                        </form>
                     </div>
-                    <p class="m-0">"When life gives you lemons, make lemon tea."</p>
-                </div>
-                <div class="testimonial-item">
-                    <div class="d-flex align-items-center mb-3">
-                        <img class="img-fluid" src="img/gamboa.jpg" alt="">
-                        <div class="ml-3">
-                            <h4>Catherine Gamboa</h4>
-                            <i>Social Media Staff</i>
-                        </div>
-                    </div>
-                    <p class="m-0">"My brain has too many tabs open, and none of them are responding."</p>
-                </div>
-                <div class="testimonial-item">
-                    <div class="d-flex align-items-center mb-3">
-                        <img class="img-fluid" src="img/lecena.jpg" alt="">
-                        <div class="ml-3">
-                            <h4>Max Lecena</h4>
-                            <i>Social Media Staff</i>
-                        </div>
-                    </div>
-                    <p class="m-0">"The more you know, the more you realize you don't know."</p>
-                </div>
-                <div class="testimonial-item">
-                    <div class="d-flex align-items-center mb-3">
-                        <img class="img-fluid" src="img/naingue.jpg" alt="">
-                        <div class="ml-3">
-                            <h4>Christian Naingue</h4>
-                            <i>Barista</i>
-                        </div>
-                    </div>
-                    <p class="m-0">"If that's the case, pencil case."</p>
-                </div>
-                <div class="testimonial-item">
-                    <div class="d-flex align-items-center mb-3">
-                        <img class="img-fluid" src="img/reuyan.jpg" alt="">
-                        <div class="ml-3">
-                            <h4>Paulino Reuyan</h4>
-                            <i>Bookkeeper</i>
-                        </div>
-                    </div>
-                    <p class="m-0">"Don't judge the book by its notebook."</p>
-                </div>
-                <div class="testimonial-item">
-                    <div class="d-flex align-items-center mb-3">
-                        <img class="img-fluid" src="img/samson.jpg" alt="">
-                        <div class="ml-3">
-                            <h4>Venlee Samson</h4>
-                            <i>Bookkeeper</i>
-                        </div>
-                    </div>
-                    <p class="m-0">"Live your life to the fullest."</p>
-                </div>
-                <div class="testimonial-item">
-                    <div class="d-flex align-items-center mb-3">
-                        <img class="img-fluid" src="img/soronio.jpg" alt="">
-                        <div class="ml-3">
-                            <h4>Euricka Soronio</h4>
-                            <i>Barista</i>
-                        </div>
-                    </div>
-                    <p class="m-0">"You are who are you."</p>
                 </div>
             </div>
         </div>
     </div>
-    <!-- Testimonial End -->
+    <!-- Reservation End -->
 
-    <!-- Contact Start -->
+    <!-- Today's Pick Start -->
     <div class="container-fluid pt-5">
         <div class="container">
             <div class="section-title">
-                <h4 class="text-primary text-uppercase" style="letter-spacing: 5px;">Contact Us</h4>
-                <h1 class="display-4">Feel Free To Contact</h1>
+                <h4 class="text-primary text-uppercase" style="letter-spacing: 5px;">Let's give it up for our..</h4>
+                <h1 class="display-4">Today's Pick</h1>
             </div>
-            <div class="row px-3 pb-2">
-                <div class="col-sm-4 text-center mb-3">
-                    <i class="fa fa-2x fa-map-marker-alt mb-3 text-primary"></i>
-                    <h4 class="font-weight-bold">Address</h4>
-                    <p>Mambaling, Cebu City</p>
+            <div class="row">
+                <div class="col-lg-6">
+                    <h1 class="mb-5">Drink of the day</h1>
+                    <div class="row align-items-center mb-5">
+                        <div class="col-4 col-sm-3">
+                            <img class="w-100 rounded-circle mb-3 mb-sm-0" src="img/caramel.jpg" alt="Caramel Macchiato">
+                        </div>
+                        <div class="col-8 col-sm-9">
+                            <h4>Caramel Macchiato</h4>
+                            <p class="m-0">A delightful blend of espresso,<br>steamed milk, and rich caramel.</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="col-sm-4 text-center mb-3">
-                    <i class="fa fa-2x fa-phone-alt mb-3 text-primary"></i>
-                    <h4 class="font-weight-bold">Phone</h4>
-                    <p>+63 991 647 6873</p>
+                <div class="col-lg-6">
+                    <h1 class="mb-5">Book of the day</h1>
+                    <div class="row align-items-center mb-5">
+                        <div class="col-4 col-sm-3">
+                            <img class="w-100 rounded-circle mb-3 mb-sm-0" src="img/miamor.jpg" alt="A Magnificently Ordinary Romance">
+                        </div>
+                        <div class="col-8 col-sm-9">
+                            <h4>A Magnificently Ordinary Romance</h4>
+                            <p class="m-0">A charming and heartfelt exploration of love and miscommunication from young people healing, growing, and exploring love in all its forms.</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="col-sm-4 text-center mb-3">
-                    <i class="far fa-2x fa-envelope mb-3 text-primary"></i>
-                    <h4 class="font-weight-bold">Email</h4>
-                    <p>info@quillia.com</p>
-                </div>
-            </div>
-            <div>
-                <iframe style="width: 100%; height: 495px;"
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15702.710119504056!2d123.87056772452942!3d10.287545300232843!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x33a99c0f273fb311%3A0x74495a1541c16233!2sMambaling%2C%20Cebu%20City%2C%206000%20Cebu!5e0!3m2!1sen!2sph!4v1764733243338!5m2!1sen!2sph" 
-                    frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
             </div>
         </div>
     </div>
-    <!-- Contact End -->
-
+    <!-- Today's Pick End -->
 
     <!-- Footer Start -->
     <div class="container-fluid footer text-white mt-5 pt-5 px-0 position-relative overlay-top">

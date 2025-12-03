@@ -32,6 +32,113 @@
         .bg-transparent.border-primary::placeholder {
             color: rgba(255, 255, 255, 0.7) !important;
         }
+        
+        /* Modal Styles */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .modal-overlay.open {
+            display: flex;
+            opacity: 1;
+        }
+        
+        .modal-dialog-custom {
+            background-color: #4D2D18;
+            border-radius: 15px;
+            max-width: 600px;
+            width: 90%;
+            max-height: 85vh;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+            animation: modalSlideIn 0.3s ease-out;
+        }
+        
+        @keyframes modalSlideIn {
+            from {
+                transform: translateY(-50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+        
+        .modal-header-custom {
+            padding: 20px 25px;
+            background-color: #102820;
+            color: #CABA9C;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid #DA9F5B;
+        }
+        
+        .modal-header-custom h3 {
+            margin: 0;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #CABA9C;
+        }
+        
+        .modal-close-custom {
+            background: none;
+            border: none;
+            font-size: 2rem;
+            color: #CABA9C;
+            cursor: pointer;
+            line-height: 1;
+            padding: 0;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: color 0.2s ease;
+        }
+        
+        .modal-close-custom:hover {
+            color: #DA9F5B;
+        }
+        
+        .modal-body-custom {
+            padding: 25px;
+            overflow-y: auto;
+            background-color: #4D2D18;
+            color: #CABA9C;
+        }
+        
+        .modal-body-custom::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        .modal-body-custom::-webkit-scrollbar-track {
+            background: rgba(202, 186, 156, 0.1);
+            border-radius: 10px;
+        }
+        
+        .modal-body-custom::-webkit-scrollbar-thumb {
+            background: #CABA9C;
+            border-radius: 10px;
+        }
+        
+        .modal-body-custom::-webkit-scrollbar-thumb:hover {
+            background: #DA9F5B;
+        }
     </style>
 </head>
 
@@ -39,7 +146,7 @@
     <!-- Navbar Start -->
     <div class="container-fluid p-0 nav-bar">
         <nav class="navbar navbar-expand-lg bg-none navbar-dark py-3">
-            <a href="index.html" class="navbar-brand px-lg-4 m-0">
+            <a href="home.html" class="navbar-brand px-lg-4 m-0">
                 <h1 class="m-0 display-4 text-uppercase text-white">QUILLIA</h1>
             </a>
             <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
@@ -47,7 +154,7 @@
             </button>
             <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                 <div class="navbar-nav ml-auto p-4">
-                    <a href="index.html" class="nav-item nav-link">Home</a>
+                    <a href="home.html" class="nav-item nav-link">Home</a>
                     <a href="about.html" class="nav-item nav-link">About</a>
                     <a href="service.html" class="nav-item nav-link">Book Catalog</a>
                     <a href="menu.html" class="nav-item nav-link">Menu</a>
@@ -57,7 +164,7 @@
                     <div class="nav-item dropdown">
                         <a href="#" id="profileDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle nav-profile" title="Profile"><i class="fa fa-user"></i></a>
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="profileDropdown">
-                            <a class="dropdown-item" href="login.html">Sign out</a>
+                            <a class="dropdown-item" href="index.html">Sign out</a>
                         </div>
                     </div>
                 </div>
@@ -85,13 +192,14 @@
         <div class="container">
             <div class="section-title">
                 <h4 class="text-primary text-uppercase" style="letter-spacing: 5px;">Reservation</h4>
-                <h1 class="display-4">Book your Event at Quillia</h1>
+                <h1 class="display-4">Book your Event at Quillia</h1> 
             </div>
         </div>
     </div>
     <!-- Events Section End -->
 
 <section>
+  <h1 class="text-primary text-uppercase" style="text-align: center;">Our Upcoming Events<br></h1>
   <div class="events-list">
     <article class="event book-club" data-details="Location: Cozy Corner; Host: Sarah L.; RSVP: bookclub@cutecafeevents.com">
       <h3>Bookclub Meeting</h3>
@@ -255,6 +363,18 @@
     <!-- Back to Top -->
     <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="fa fa-angle-double-up"></i></a>
 
+    <!-- Modal for Event/Gallery Details -->
+    <div id="modalOverlay" class="modal-overlay" aria-hidden="true">
+        <div class="modal-dialog-custom" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+            <div class="modal-header-custom">
+                <h3 id="modalTitle">Event Details</h3>
+                <button id="modalClose" class="modal-close-custom" aria-label="Close modal">&times;</button>
+            </div>
+            <div id="modalBody" class="modal-body-custom" tabindex="0">
+                <!-- Content will be inserted here -->
+            </div>
+        </div>
+    </div>
 
     <!-- JavaScript Libraries -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
@@ -268,6 +388,109 @@
 
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
+    
+    <!-- Modal Functionality -->
+    <script>
+        (function () {
+            // Modal elements
+            const modalOverlay = document.getElementById('modalOverlay');
+            const modalBody = document.getElementById('modalBody');
+            const modalClose = document.getElementById('modalClose');
+
+            function openModal(contentHtml) {
+                if (!modalOverlay || !modalBody) return;
+                modalBody.innerHTML = contentHtml;
+                modalOverlay.classList.add('open');
+                modalOverlay.setAttribute('aria-hidden', 'false');
+                setTimeout(() => {
+                    modalBody.focus();
+                }, 50);
+            }
+
+            function closeModal() {
+                if (!modalOverlay || !modalBody) return;
+                modalOverlay.classList.remove('open');
+                modalOverlay.setAttribute('aria-hidden', 'true');
+                modalBody.innerHTML = '';
+            }
+
+            if (modalClose) {
+                modalClose.addEventListener('click', closeModal);
+            }
+
+            if (modalOverlay) {
+                modalOverlay.addEventListener('click', (e) => {
+                    if (e.target === modalOverlay) {
+                        closeModal();
+                    }
+                });
+            }
+
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') {
+                    closeModal();
+                }
+            });
+
+            // Escape HTML helper
+            function escapeHtml(str) {
+                return String(str)
+                    .replace(/&/g, '&amp;')
+                    .replace(/</g, '&lt;')
+                    .replace(/>/g, '&gt;')
+                    .replace(/"/g, '&quot;')
+                    .replace(/'/g, '&#39;');
+            }
+
+            // Clickable events -> modal
+            const events = document.querySelectorAll('.events-list .event');
+            events.forEach((el) => {
+                el.style.cursor = 'pointer';
+                el.addEventListener('click', () => {
+                    const title = el.querySelector('h3')
+                        ? el.querySelector('h3').textContent.trim()
+                        : 'Event';
+                    const paras = Array.from(el.querySelectorAll('p')).map((p) =>
+                        p.innerHTML.trim()
+                    );
+
+                    let html = `<h4 style="margin-top:0; color:#DA9F5B;">${escapeHtml(title)}</h4>`;
+                    paras.forEach((p) => {
+                        html += `<p style="color:#fff;">${p}</p>`;
+                    });
+
+                    const details = el.dataset.details;
+                    if (details) {
+                        const formatted = escapeHtml(details).replace(/\n/g, '<br>');
+                        html += `<p style="color:#fff;"><strong>More info:</strong><br>${formatted}</p>`;
+                    }
+
+                    openModal(html);
+                });
+            });
+
+            // Clickable gallery items -> modal
+            const galleryItems = document.querySelectorAll('.gallery-grid .gallery-item');
+            galleryItems.forEach((item) => {
+                item.style.cursor = 'pointer';
+                item.addEventListener('click', () => {
+                    const img = item.querySelector('img');
+                    const captionEl = item.querySelector('p');
+                    const caption = captionEl ? captionEl.textContent.trim() : '';
+
+                    let html = '';
+                    if (img) {
+                        html += `<img src="${img.src}" alt="${escapeHtml(img.alt)}" style="max-width: 100%; height: auto; border-radius: 8px;">`;
+                    }
+                    if (caption) {
+                        html += `<h4 style="margin-top:15px; color:#DA9F5B;">${escapeHtml(caption)}</h4>`;
+                    }
+
+                    openModal(html);
+                });
+            });
+        })();
+    </script>
 </body>
 
 </html>

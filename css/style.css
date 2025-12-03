@@ -64,6 +64,11 @@ body {
   background-color: #FFFBF2;
 }
 
+/* White background for carousel area */
+.container-fluid.p-0.mb-5 {
+  background-color: #FFFBF2;
+}
+
 [tabindex="-1"]:focus:not(:focus-visible) {
   outline: 0 !important;
 }
@@ -5835,6 +5840,7 @@ a.close.disabled {
 
 .carousel {
   position: relative;
+  background-color: #FFFBF2;
 }
 
 .carousel.pointer-event {
@@ -5845,6 +5851,7 @@ a.close.disabled {
   position: relative;
   width: 100%;
   overflow: hidden;
+  background-color: #FFFBF2;
 }
 
 .carousel-inner::after {
@@ -5861,6 +5868,7 @@ a.close.disabled {
   margin-right: -100%;
   backface-visibility: hidden;
   transition: transform 0.6s ease-in-out;
+  background-color: #FFFBF2;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -9553,8 +9561,14 @@ h6,
 }
 
 .overlay-bottom::after {
-  bottom: -1px;
-  background: url(../img/overlay-bottom.png);
+  bottom: 0;
+  height: 250px;
+  background: linear-gradient(to bottom, rgba(255, 251, 242, 0) 0%, rgba(255, 251, 242, 0.3) 30%, rgba(255, 251, 242, 0.7) 60%, rgba(255, 251, 242, 1) 100%);
+  z-index: 2;
+}
+
+.carousel.page-header {
+  background: #FFFBF2;
 }
 
 .carousel-caption {

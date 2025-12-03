@@ -643,7 +643,7 @@ const feedbackSection = document.getElementById("feedbackSection");
 
 const viewAllContainer = document.getElementById("viewAllContainer");
 const sortSelectViewAll = document.getElementById("sortSelectViewAll");
-const filterGenreContainer = document.querySelector(".filter-genre");
+const genreSelectViewAll = document.getElementById("genreSelectViewAll");
 
 const closeBtns = document.querySelectorAll(".close-btn");
 
@@ -667,7 +667,8 @@ function createSectionBookCard(book) {
   card.innerHTML = `
     <img src="${book.image}" alt="${book.title}" />
     <h3>${book.title}</h3>
-    <p>${book.author}</p>
+    <p class="author">${book.author}</p>
+    <p class="genre">${book.genre.join(", ")}</p>
   `;
   card.onclick = () => openBookModal(book);
   return card;
@@ -684,9 +685,9 @@ function createViewAllBookCard(book) {
     <div class="book-right">
       <div class="feedback-bubbles"></div>
       <h3>${book.title}</h3>
-      <p>${book.author}</p>
+      <p class="author-name">${book.author}</p>
+      <p class="genre-info"><strong>Genre:</strong> ${book.genre.join(", ")}</p>
       <p class="synopsis"><strong>Synopsis:</strong> ${book.synopsis}</p>
-      <p><strong>Genre:</strong> ${book.genre.join(", ")}</p>
       <div class="book-meta">
         <span class="release-date"><strong>Release Date:</strong> ${book.releaseDate}</span>
         <div class="book-rating">
@@ -917,11 +918,12 @@ function openViewAllModal(section) {
   modal.classList.add("show");
 
   sortSelectViewAll.value = "default";
+  genreSelectViewAll.value = "all";
 
   const list = filterBooksBySection(section);
   currentFilteredBooks = list;
   renderViewAll(list);
-  renderGenreButtons(list);
+  populateGenreDropdown(list);
 }
 
 // only closes when x button is clicked
@@ -943,33 +945,31 @@ document.getElementById("searchInput").addEventListener("input", function() {
   applySortAndRender();
 });
 
-// render genre buttons for filtering in view all
-function renderGenreButtons(bookList) {
-  const genres = [...new Set(bookList.flatMap(b => b.genre))];
-  filterGenreContainer.innerHTML = "";
+// populate genre dropdown for filtering in view all
+function populateGenreDropdown(bookList) {
+  const genres = [...new Set(bookList.flatMap(b => b.genre))].sort();
+  genreSelectViewAll.innerHTML = '<option value="all">All Genres</option>';
 
   genres.forEach(genre => {
-    const btn = document.createElement("button");
-    btn.className = "genre-btn";
-    btn.textContent = genre;
-
-    btn.onclick = () => {
-      const isActive = btn.classList.contains("active");
-      document.querySelectorAll(".genre-btn").forEach(b => b.classList.remove("active"));
-
-      if (!isActive) {
-        btn.classList.add("active");
-        currentFilteredBooks = bookList.filter(b => b.genre.includes(genre));
-      } else {
-        currentFilteredBooks = filterBooksBySection(currentViewAllSection);
-      }
-
-      applySortAndRender();
-    };
-
-    filterGenreContainer.appendChild(btn);
+    const option = document.createElement("option");
+    option.value = genre;
+    option.textContent = genre;
+    genreSelectViewAll.appendChild(option);
   });
 }
+
+// genre dropdown change handler
+genreSelectViewAll.addEventListener("change", function() {
+  const selectedGenre = this.value;
+  
+  if (selectedGenre === "all") {
+    currentFilteredBooks = filterBooksBySection(currentViewAllSection);
+  } else {
+    currentFilteredBooks = filterBooksBySection(currentViewAllSection).filter(b => b.genre.includes(selectedGenre));
+  }
+  
+  applySortAndRender();
+});
 
 // sort in view all modal
 sortSelectViewAll.addEventListener("change", applySortAndRender);

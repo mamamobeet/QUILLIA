@@ -1,308 +1,548 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="utf-8">
-    <title>QUILLIA</title>
-    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <meta charset="UTF-8">
+  <title>QUILLIA</title>
 
-    <!-- Favicon -->
-    <link href="img/quillia.png" rel="icon">
+  <link href="img/quillia.png" rel="icon">
 
-    <!-- Google Font -->
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet"> 
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,800" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
-    <!-- Font Awesome -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; }
 
-    <!-- Libraries Stylesheet -->
-    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
-    <link href="lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Montserrat', sans-serif;
+      height: 100vh;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
 
-    <!-- Customized Bootstrap Stylesheet -->
-    <link href="css/style.min.css" rel="stylesheet">
-    
-    <style>
-        /* Carousel Video Sizing */
-        .carousel-video {
-            width: 100%;
-            height: 600px;
-            object-fit: cover;
-            object-position: center;
-        }
-        
-        @media (max-width: 992px) {
-            .carousel-video {
-                height: 450px;
-            }
-        }
-        
-        @media (max-width: 768px) {
-            .carousel-video {
-                height: 350px;
-            }
-        }
-        
-        @media (max-width: 576px) {
-            .carousel-video {
-                height: 280px;
-            }
-        }
-        
-        /* White text for form inputs */
-        .bg-transparent.border-primary {
-            color: white !important;
-        }
-        .bg-transparent.border-primary::placeholder {
-            color: rgba(255, 255, 255, 0.7) !important;
-        }
-    </style>
+    /* VIDEO BACKGROUND */
+    video.bg-video {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -1;
+      filter: brightness(0.5);
+    }
+
+    .form-logo {
+      width: 200px;
+      margin-bottom: 20px;
+    }
+
+    h1 { font-weight: bold; margin: 0; }
+    h2 { text-align: center; }
+    p {
+      font-size: 14px;
+      font-weight: 100;
+      line-height: 20px;
+      letter-spacing: 0.5px;
+      margin: 20px 0 30px;
+    }
+    span { font-size: 12px; }
+
+    a {
+      color: #4D2D18;
+      font-size: 14px;
+      text-decoration: none;
+      margin: 15px 0;
+    }
+
+    button {
+      border-radius: 20px;
+      border: 1px solid #4D2D18;
+      background-color: #8A6240;
+      color: #FFFFFF;
+      font-size: 12px;
+      font-weight: bold;
+      padding: 12px 45px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      transition: transform 80ms ease-in;
+    }
+
+    button:active { transform: scale(0.95); }
+    button.ghost { background-color: transparent; border-color: #FFFFFF; }
+
+    form {
+      background-color: #FFFFFF;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      padding: 0 50px;
+      height: 100%;
+      text-align: center;
+    }
+
+    input {
+      background-color: #eee;
+      border: none;
+      padding: 12px 15px;
+      margin: 8px 0;
+      width: 100%;
+    }
+
+    .container {
+      background-color: rgba(255,255,255,0);
+      border-radius: 10px;
+      backdrop-filter: blur(6px);
+      box-shadow: 0 14px 28px rgba(0,0,0,0.25),
+                  0 10px 10px rgba(0,0,0,0.22);
+      position: relative;
+      overflow: hidden;
+      width: 650px;
+      max-width: 100%;
+      min-height: 450px;
+    }
+
+    .form-container {
+      position: absolute;
+      top: 0;
+      height: 100%;
+      transition: all 0.6s ease-in-out;
+    }
+
+    .sign-in-container { left: 0; width: 50%; z-index: 2; }
+    .container.right-panel-active .sign-in-container {
+      transform: translateX(100%);
+    }
+
+    .sign-up-container { left: 0; width: 50%; opacity: 0; z-index: 1; }
+    .container.right-panel-active .sign-up-container {
+      transform: translateX(100%);
+      opacity: 1;
+      z-index: 5;
+      animation: show 0.6s;
+    }
+
+    @keyframes show {
+      0%, 49.99% { opacity: 0; z-index: 1; }
+      50%, 100% { opacity: 1; z-index: 5; }
+    }
+
+    .overlay-container {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      width: 50%;
+      height: 100%;
+      overflow: hidden;
+      transition: transform 0.6s ease-in-out;
+      z-index: 100;
+    }
+
+    .container.right-panel-active .overlay-container {
+      transform: translateX(-100%);
+    }
+
+    .overlay {
+      background: linear-gradient(to right, #4C6444, #102820);
+      background-size: cover;
+      position: relative;
+      left: -100%;
+      height: 100%;
+      width: 200%;
+      transform: translateX(0);
+      transition: transform 0.6s ease-in-out;
+      color: white;
+    }
+
+    .container.right-panel-active .overlay {
+      transform: translateX(50%);
+    }
+
+    .overlay-panel {
+      position: absolute;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      padding: 0 40px;
+      text-align: center;
+      top: 0;
+      height: 100%;
+      width: 50%;
+    }
+
+    /* Ensure overlay panels and their children move smoothly with the overlay */
+    .overlay-panel {
+      transition: transform 0.6s ease-in-out, opacity 0.45s ease-in-out;
+      will-change: transform, opacity;
+    }
+
+    .overlay-panel h1,
+    .overlay-panel p,
+    .overlay-panel button {
+      /* Only animate opacity for children so they follow the overlay's movement
+         smoothly without independent horizontal transforms that can cause lag. */
+      transition: opacity 0.35s ease-in-out;
+      transform: none;
+      opacity: 1;
+    }
+
+    .overlay-left {
+      transform: translateX(-20%);
+    }
+
+    .container.right-panel-active .overlay-left {
+      transform: translateX(0);
+    }
+
+    .overlay-right {
+      right: 0;
+      transform: translateX(0);
+    }
+
+    .container.right-panel-active .overlay-right {
+      transform: translateX(20%);
+    }
+
+    .social-container {
+      margin: 20px 0;
+    }
+
+    .social-container a {
+      border: 1px solid #DDDDDD;
+      border-radius: 50%;
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      margin: 0 5px;
+      height: 40px;
+      width: 40px;
+    }
+
+    /* Show/Hide Password */
+    .password-wrapper {
+      position: relative;
+      width: 100%;
+      margin-bottom: 20px
+    }
+
+    .toggle-password {
+      position: absolute;
+      right: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      cursor: pointer;
+      font-size: 18px;
+      color: #555;
+    }
+
+    /* Top header for placing a logo and site name */
+    .site-header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      min-height: 64px;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: flex-end;
+      padding: 8px 20px;
+      z-index: 1000;
+      background: linear-gradient(to bottom, rgba(0,0,0,0.12), rgba(0,0,0,0));
+    }
+
+    .popup {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.6);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 99999;
+    }
+
+    .popup-box {
+      background: white;
+      padding: 25px 35px;
+      border-radius: 12px;
+      text-align: center;
+      width: 280px;
+      font-family: 'Montserrat';
+      animation: pop 0.25s ease;
+    }
+
+    @keyframes pop {
+      0% { transform: scale(0.7); opacity: 0; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+
+    #popup-close {
+      margin-top: 18px;
+      padding: 10px 25px;
+      border: none;
+      background: #8A6240;
+      color: white;
+      border-radius: 20px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .logo-area { height: 44px; display: flex; align-items: center; }
+    .logo-area img { height: 44px; width: auto; display: block; }
+
+    /* Top-left site name matching home.html navbar style */
+    .site-brand {
+      font-family: 'Roboto', sans-serif;
+      font-size: 3.5rem;
+      font-weight: 700;
+      color: #ffffff;
+      line-height: 1.2;
+      margin: 0;
+      letter-spacing: 0;
+      text-transform: uppercase;
+      position: absolute;
+      top: 12px;
+      left: 30px;
+    }
+
+    @media (max-width: 1200px) {
+      .site-brand {
+        font-size: calc(1.475rem + 2.7vw);
+      }
+    }
+
+    @media (max-width: 480px) {
+      .site-header { height: 52px; padding: 0 10px; }
+      .logo-area img { height: 36px; }
+      .site-brand {
+        font-size: 1.8rem;
+        top: 15px;
+        left: 15px;
+      }
+    }
+  </style>
 </head>
 
 <body>
-    <!-- Navbar Start -->
-    <div class="container-fluid p-0 nav-bar">
-        <nav class="navbar navbar-expand-lg bg-none navbar-dark py-3">
-            <a href="index.html" class="navbar-brand px-lg-4 m-0">
-                <h1 class="m-0 display-4 text-uppercase text-white">QUILLIA</h1>
-            </a>
-            <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
-                <div class="navbar-nav ml-auto p-4">
-                    <a href="index.html" class="nav-item nav-link active">Home</a>
-                    <a href="about.html" class="nav-item nav-link">About</a>
-                    <a href="service.html" class="nav-item nav-link">Book Catalog</a>
-                    <a href="menu.html" class="nav-item nav-link">Menu</a>
-                    <a href="subscription.html" class="nav-item nav-link">Subscription</a>
-                    <a href="reservation.html" class="nav-item nav-link">Reservation</a>
-                    <a href="contact.html" class="nav-item nav-link">Contact</a>
-                    <div class="nav-item dropdown">
-                        <a href="#" id="profileDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle nav-profile" title="Profile"><i class="fa fa-user"></i></a>
-                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="profileDropdown">
-                            <a class="dropdown-item" href="login.html">Sign out</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </nav>
+  <header class="site-header">
+    <div class="logo-area">
+      <!--LOGOLOGO-->
     </div>
-    <!-- Navbar End -->
+    <div class="site-brand">QUILLIA</div>
+  </header>
+<!-- VIDEO BACKGROUND -->
+<video autoplay loop muted class="bg-video">
+  <source src="img/coffee-beans.mp4" type="video/mp4">
+</video>
 
-    <!-- Carousel Start -->
-    <div class="container-fluid p-0 mb-5">
-        <div id="blog-carousel" class="carousel page-header slide overlay-bottom" data-ride="carousel">
-            <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <video autoplay muted loop playsinline class="carousel-video" src="img/carousel-1.mp4" alt="Coffee"></video>
-                    <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
-                        <h2 class="text-primary font-weight-medium m-0">Book in hand,</h2>
-                        <h1 class="display-1 text-white m-0">Coffee in cup,</h1>
-                        <h2 class="text-white m-0">Peace in heart.</h2>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <video autoplay muted loop playsinline class="carousel-video" src="img/carousel-2.mp4" alt="Reading"></video>
-                    <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
-                        <h2 class="text-primary font-weight-medium m-0">Sip the coffee,</h2>
-                        <h1 class="display-1 text-white m-0">Turn the page,</h1>
-                        <h2 class="text-white m-0">Enjoy the moment.</h2>
-                    </div>
-                </div>
-            </div>
-            <a class="carousel-control-prev" href="#blog-carousel" data-slide="prev">
-                <span class="carousel-control-prev-icon"></span>
-            </a>
-            <a class="carousel-control-next" href="#blog-carousel" data-slide="next">
-                <span class="carousel-control-next-icon"></span>
-            </a>
-        </div>
+<div class="container" id="container">
+  
+  <!-- SIGN UP -->
+  <div class="form-container sign-up-container">
+    <form id="signupForm" action="#">
+      <h1>Create Account</h1>
+      <div class="social-container">
+        <a href="https://www.facebook.com/" class="social"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://www.gmail.com/" class="social"><i class="fab fa-google-plus-g"></i></a>
+        <a href="https://www.linkedin.com/" class="social"><i class="fab fa-linkedin-in"></i></a>
+      </div>
+      <span>or use your email</span>
+      <input type="text" id="signupName" placeholder="Name" />
+      <input type="email" id="signupEmail" placeholder="Email" />
+
+      <div class="password-wrapper">
+        <input type="password" id="signupPass" placeholder="Password">
+        <i class="fas fa-eye toggle-password" data-target="signupPass"></i>
+      </div>
+
+      <button type="button" id="signupBtn">Sign Up</button>
+    </form>
+  </div>
+
+  <!-- SIGN IN -->
+  <div class="form-container sign-in-container">
+    <form id="signinForm" action="#">
+      <h1>Sign in</h1>
+      <div class="social-container">
+        <a href="https://www.facebook.com/" class="social"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://www.gmail.com/" class="social"><i class="fab fa-google-plus-g"></i></a>
+        <a href="https://www.linkedin.com/" class="social"><i class="fab fa-linkedin-in"></i></a>
+      </div>
+      <span>or use your account</span>
+
+      <input type="email" id="signinEmail" placeholder="Email" />
+
+      <div class="password-wrapper">
+        <input type="password" id="signinPass" placeholder="Password">
+        <i class="fas fa-eye toggle-password" data-target="signinPass"></i>
+      </div>
+
+      <a href="#" id="forgotPasswordLink">Forgot your password?</a>
+      <button type="button" id="signinBtn">Sign In</button>
+    </form>
+  </div>
+
+  <!-- OVERLAY -->
+  <div class="overlay-container">
+    <div class="overlay">
+      <div class="overlay-panel overlay-left">
+        <h1>Welcome Back!</h1>
+        <p>To stay connected, please sign in</p>
+        <button class="ghost" id="signIn">Sign In</button>
+      </div>
+      <div class="overlay-panel overlay-right">
+        <h1>Hello, Friend!</h1>
+        <p>Start your journey with us</p>
+        <button class="ghost" id="signUp">Sign Up</button>
+      </div>
     </div>
-    <!-- Carousel End -->
+  </div>
 
+</div>
 
-    <!-- About Start -->
-    <div class="container-fluid py-5">
-        <div class="container">
-            <div class="section-title">
-                <h4 class="text-primary text-uppercase" style="letter-spacing: 5px;">About Us</h4>
-                <h1 class="display-4">Get To Know Quillia</h1>
-            </div>
-            <div class="row">
-                <div class="col-lg-4 py-0 py-lg-5">
-                    <h1 class="mb-3">Welcome to Quillia</h1>
-                    <h5 class="mb-3">A warm and creative space built by a group of friends who love good coffee, good books, and good company.</h5>
-                    <p>We started this place with one simple goal: to create a spot where people can relax, read, study, meet, and feel at home. Whether you're grabbing your favorite drink, discovering a new book, or joining one of our events — we’re glad you’re here.</p>
-                </div>
-                <div class="col-lg-4 py-5 py-lg-0" style="min-height: 500px;">
-                    <div class="position-relative h-100">
-                        <img class="position-absolute w-100 h-100" src="img/about.png" style="object-fit: cover;">
-                    </div>
-                </div>
-                <div class="col-lg-4 py-0 py-lg-5">
-                    <h1 class="mb-3">Our Dream</h1>
-                    <p>To become a community-centered café and bookstore that inspires</p>
-                    <h5 class="mb-3"><i class="fa fa-check text-primary mr-3"></i>creativity,</h5>
-                    <h5 class="mb-3"><i class="fa fa-check text-primary mr-3"></i>comfort,</h5>
-                    <h5 class="mb-3"><i class="fa fa-check text-primary mr-3"></i>learning,</h5>
-                    <h5 class="mb-3"><i class="fa fa-check text-primary mr-3"></i>and meaningful human connections.</h5>
-                    <a href="about.html" class="btn btn-primary font-weight-bold py-2 px-4 mt-2">Learn More</a>
-                </div>
-            </div>
-        </div>
+<div id="popup" class="popup">
+  <div class="popup-box">
+    <p id="popup-message"></p>
+    <button id="popup-close">OK</button>
+  </div>
+</div>
+
+<!-- Forgot Password Popup -->
+<div id="forgotPasswordPopup" class="popup" style="display: none;">
+  <div class="popup-box">
+    <h3 style="margin-top: 0; color: #4C6444;">Reset Password</h3>
+    <p style="margin-bottom: 15px;">Enter your email to reset your password:</p>
+    <input type="email" id="resetEmail" placeholder="Your Email" style="width: 100%; padding: 10px; margin-bottom: 15px; border: 1px solid #ddd; border-radius: 5px; font-size: 14px;">
+    <div style="display: flex; gap: 10px; justify-content: flex-end;">
+      <button id="cancelReset" style="padding: 10px 20px; border: none; border-radius: 5px; background: #ccc; cursor: pointer;">Cancel</button>
+      <button id="sendResetEmail" style="padding: 10px 20px; border: none; border-radius: 5px; background: #4C6444; color: white; cursor: pointer;">Send</button>
     </div>
-    <!-- About End -->
-
-    <!-- Reservation Start -->
-    <div class="container-fluid reservation position-relative overlay-top overlay-bottom my-5">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-6 my-5 my-lg-0">
-                    <div class="p-5">
-                        <div class="mb-4">
-                            <h1 class="display-3 text-primary">30% OFF</h1>
-                            <h1 class="text-white">For Online Reservation</h1>
-                        </div>
-                        <p class="text-white">Book your event in advance and enjoy a smooth, hassle-free coffee and reading experience</p>
-                        <ul class="list-inline text-white m-0">
-                            <li class="py-2"><i class="fa fa-check text-primary mr-3"></i>Reserve your preferred date and time instantly</li>
-                            <li class="py-2"><i class="fa fa-check text-primary mr-3"></i>Avoid wait times during busy hours</li>
-                            <li class="py-2"><i class="fa fa-check text-primary mr-3"></i>Get priority seating for groups or special meetups</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-lg-6">
-                    <div class="text-center p-5" style="background: rgba(51, 33, 29, .8);">
-                        <h1 class="text-white mb-4 mt-5">Book Your Event</h1>
-                        <form class="mb-5" action="https://formsubmit.co/bien.2309.blank@gmail.com" method="POST">
-                            <!-- FormSubmit Configuration -->
-                            <input type="hidden" name="_subject" value="New Event Booking - Quillia">
-                            <input type="hidden" name="_captcha" value="false">
-                            <input type="hidden" name="_template" value="table">
-                            <input type="text" name="_honey" style="display:none">
-                            
-                            <div class="form-group">
-                                <input type="text" name="name" class="form-control bg-transparent border-primary p-4" placeholder="Name"
-                                    required="required" />
-                            </div>
-                            <div class="form-group">
-                                <input type="email" name="email" class="form-control bg-transparent border-primary p-4" placeholder="Email"
-                                    required="required" />
-                            </div>
-                            <div class="form-group">
-                                <input type="date" name="date" class="form-control bg-transparent border-primary p-4" placeholder="Date" required="required" />
-                            </div>
-                            <div class="form-group">
-                                <input type="time" name="time" class="form-control bg-transparent border-primary p-4" placeholder="Time" required="required" />
-                            </div>
-                            <div class="form-group">
-                                <input type="number" name="number_of_people" class="form-control bg-transparent border-primary p-4" placeholder="Number of People" min="1" required="required" />
-                            </div>
-                            <div class="form-group">
-                                <textarea name="special_requests" class="form-control bg-transparent border-primary p-4" rows="3" placeholder="Special Requests (Optional)"></textarea>
-                            </div>
-                            <div>
-                                <button class="btn btn-primary btn-block font-weight-bold py-3" type="submit">Book Now</button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Reservation End -->
-
-    <!-- Today's Pick Start -->
-    <div class="container-fluid pt-5">
-        <div class="container">
-            <div class="section-title">
-                <h4 class="text-primary text-uppercase" style="letter-spacing: 5px;">Let's give it up for our..</h4>
-                <h1 class="display-4">Today's Pick</h1>
-            </div>
-            <div class="row">
-                <div class="col-lg-6">
-                    <h1 class="mb-5">Drink of the day</h1>
-                    <div class="row align-items-center mb-5">
-                        <div class="col-4 col-sm-3">
-                            <img class="w-100 rounded-circle mb-3 mb-sm-0" src="img/caramel.jpg" alt="Caramel Macchiato">
-                        </div>
-                        <div class="col-8 col-sm-9">
-                            <h4>Caramel Macchiato</h4>
-                            <p class="m-0">A delightful blend of espresso,<br>steamed milk, and rich caramel.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-6">
-                    <h1 class="mb-5">Book of the day</h1>
-                    <div class="row align-items-center mb-5">
-                        <div class="col-4 col-sm-3">
-                            <img class="w-100 rounded-circle mb-3 mb-sm-0" src="img/miamor.jpg" alt="A Magnificently Ordinary Romance">
-                        </div>
-                        <div class="col-8 col-sm-9">
-                            <h4>A Magnificently Ordinary Romance</h4>
-                            <p class="m-0">A charming and heartfelt exploration of love and miscommunication from young people healing, growing, and exploring love in all its forms.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Today's Pick End -->
-
-    <!-- Footer Start -->
-    <div class="container-fluid footer text-white mt-5 pt-5 px-0 position-relative overlay-top">
-        <div class="row mx-0 pt-5 px-sm-3 px-lg-5 mt-4">
-            <div class="col-lg-4 col-md-6 mb-5">
-                <h4 class="text-white text-uppercase mb-4" style="letter-spacing: 3px;">Get In Touch</h4>
-                <p><i class="fa fa-map-marker-alt mr-2"></i>Mambaling, Cebu City</p>
-                <p><i class="fa fa-phone-alt mr-2"></i>+63 991 647 6873</p>
-                <p class="m-0"><i class="fa fa-envelope mr-2"></i>info@quillia.com</p>
-            </div>
-            <div class="col-lg-4 col-md-6 mb-5">
-                <h4 class="text-white text-uppercase mb-4" style="letter-spacing: 3px;">Follow Us</h4>
-                <p>Like and Follow our Social Media </p>
-                <div class="d-flex justify-content-start">
-                    <a class="btn btn-lg btn-outline-light btn-lg-square mr-2" href="https://twitter.com" target="_blank"><i class="fab fa-x-twitter"></i></a>
-                    <a class="btn btn-lg btn-outline-light btn-lg-square mr-2" href="https://facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
-                    <a class="btn btn-lg btn-outline-light btn-lg-square mr-2" href="https://linkedin.com" target="_blank"><i class="fab fa-linkedin-in"></i></a>
-                    <a class="btn btn-lg btn-outline-light btn-lg-square" href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6 mb-5">
-                <h4 class="text-white text-uppercase mb-4" style="letter-spacing: 3px;">Open Hours</h4>
-                <div>
-                    <h6 class="text-white text-uppercase">Monday - Friday</h6>
-                    <p>8.00 AM - 8.00 PM</p>
-                    <h6 class="text-white text-uppercase">Saturday - Sunday</h6>
-                    <p>1.00 PM - 5.00 PM</p>
-                </div>
-            </div>
-        </div>
-        <div class="container-fluid text-center text-white border-top mt-4 py-4 px-sm-3 px-md-5" style="border-color: rgba(256, 256, 256, .1) !important;">
-            <p class="mb-2 text-white">Copyright &copy; <a class="font-weight-bold" href="#">Quillia</a>. All Rights Reserved.</a></p>
-        </div>
-    </div>
-    <!-- Footer End -->
+  </div>
+</div>
 
 
-    <!-- Back to Top -->
-    <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="fa fa-angle-double-up"></i></a>
+<script>
+  const signUpButton = document.getElementById('signUp');
+  const signInButton = document.getElementById('signIn');
+  const container = document.getElementById('container');
 
+  signUpButton.addEventListener('click', () => container.classList.add("right-panel-active"));
+  signInButton.addEventListener('click', () => container.classList.remove("right-panel-active"));
 
-    <!-- JavaScript Libraries -->
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
-    <script src="lib/easing/easing.min.js"></script>
-    <script src="lib/waypoints/waypoints.min.js"></script>
-    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
-    <script src="lib/tempusdominus/js/moment.min.js"></script>
-    <script src="lib/tempusdominus/js/moment-timezone.min.js"></script>
-    <script src="lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
+  // Show / Hide password
+  document.querySelectorAll(".toggle-password").forEach(icon => {
+    icon.addEventListener("click", () => {
+      const target = document.getElementById(icon.getAttribute("data-target"));
+      const type = target.type === "password" ? "text" : "password";
+      target.type = type;
+      icon.classList.toggle("fa-eye");
+      icon.classList.toggle("fa-eye-slash");
+    });
+  });
 
-    <!-- Template Javascript -->
-    <script src="js/main.js"></script>
+  // Handle Sign In / Sign Up behavior
+  const signinBtn = document.getElementById('signinBtn');
+  const signupBtn = document.getElementById('signupBtn');
+
+  signinBtn.addEventListener('click', (e) => {
+    const email = document.getElementById('signinEmail').value.trim();
+    const pass = document.getElementById('signinPass').value.trim();
+    if (!email || !pass) {
+      showPopup('Please fill in all details to sign in.');
+      return;
+    }
+
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailPattern.test(email)) {
+      showPopup("Please enter a valid email address.");
+      return;
+    } 
+    // On successful fill, redirect to home page
+    window.location.href = 'home.html';
+  });
+
+  signupBtn.addEventListener('click', (e) => {
+    const name = document.getElementById('signupName').value.trim();
+    const email = document.getElementById('signupEmail').value.trim();
+    const pass = document.getElementById('signupPass').value.trim();
+    if (!name || !email || !pass) {
+      showPopup('Please fill in all details to sign up.');
+      return;
+    }
+
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailPattern.test(email)) {
+      showPopup("Please enter a valid email address.");
+      return;
+    }
+    // Show email confirmation popup
+    showPopup('Please check your email to confirm your signup!');
+  });
+
+  function showPopup(message) {
+    document.getElementById("popup-message").innerText = message;
+    document.getElementById("popup").style.display = "flex";
+  }
+
+  document.getElementById("popup-close").addEventListener("click", () => {
+    document.getElementById("popup").style.display = "none";
+  });
+
+  // Forgot Password functionality
+  const forgotPasswordLink = document.getElementById('forgotPasswordLink');
+  const forgotPasswordPopup = document.getElementById('forgotPasswordPopup');
+  const cancelReset = document.getElementById('cancelReset');
+  const sendResetEmail = document.getElementById('sendResetEmail');
+  const resetEmailInput = document.getElementById('resetEmail');
+
+  forgotPasswordLink.addEventListener('click', (e) => {
+    e.preventDefault();
+    forgotPasswordPopup.style.display = 'flex';
+    resetEmailInput.value = '';
+    resetEmailInput.focus();
+  });
+
+  cancelReset.addEventListener('click', () => {
+    forgotPasswordPopup.style.display = 'none';
+  });
+
+  sendResetEmail.addEventListener('click', () => {
+    const email = resetEmailInput.value.trim();
+    
+    if (!email) {
+      alert('Please enter your email address.');
+      return;
+    }
+
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailPattern.test(email)) {
+      alert('Please enter a valid email address.');
+      return;
+    }
+
+    // Close forgot password popup
+    forgotPasswordPopup.style.display = 'none';
+    
+    // Show confirmation popup
+    showPopup('Please check your email to change your password.');
+  });
+
+  // Close forgot password popup when clicking outside
+  forgotPasswordPopup.addEventListener('click', (e) => {
+    if (e.target === forgotPasswordPopup) {
+      forgotPasswordPopup.style.display = 'none';
+    }
+  });
+
+</script>
 </body>
-
 </html>

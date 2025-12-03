@@ -104,7 +104,7 @@ header {
   );
   backdrop-filter: blur(4px);
   width: 180px;
-  height: 300px;
+  height: 320px;
   padding: 12px;
   border-radius: 14px;
   color: white;
@@ -120,10 +120,10 @@ header {
 
 .book-card img {
   width: 100%;
-  max-height: 180px;
+  max-height: 170px;
   object-fit: contain;
   border-radius: 6px;
-  margin-bottom: 10px;
+  margin-bottom: 8px;
 }
 
 .book-card h3 {
@@ -137,6 +137,18 @@ header {
   font-size: 0.8rem;
   opacity: 0.9;
   margin: 0;
+}
+
+.book-card p.author {
+  font-style: italic;
+  color: #CABA9C;
+}
+
+.book-card p.genre {
+  font-size: 0.7rem;
+  color: #F7F1E7;
+  opacity: 0.85;
+  margin-top: 4px;
 }
 
 .book-card:hover {
@@ -429,46 +441,35 @@ header {
 
 .viewall-controls {
   display: flex;
+  gap: 20px;
+  align-items: center;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.viewall-controls .control-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
   font-size: 0.85rem;
   font-weight: bold;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 10px;
-}
-
-.filter-genre {
-  display: flex;
-  overflow-x: auto;
-  white-space: nowrap;
-  gap: 12px;
-  padding-bottom: 6px;
-  margin-bottom: 20px;
-}
-
-.filter-genre button {
-  flex-shrink: 0;
-  padding: 6px 14px;
-  border-radius: 20px;
-  border: 1px solid var(--dark-brown);
-  background: var(--beige);
-  cursor: pointer;
-  transition: background 0.2s, color 0.2s;
   color: var(--dark-brown);
 }
 
-.filter-genre button:hover { background: #8B6C5C; color: var(--beige); }
-.filter-genre button.active { background: var(--dark-brown); color: var(--beige); }
+.viewall-controls .control-group label {
+  white-space: nowrap;
+}
 
-#sortSelectViewAll {
-  width: 100px;  
-  min-width: 70px; 
+#sortSelectViewAll,
+#genreSelectViewAll {
+  min-width: 120px;
   border-radius: 20px;
   border: 1px solid var(--dark-brown);
   background: transparent;
   color: var(--dark-brown);
   font-size: 0.85rem;
   font-weight: bold;
-  padding: 2px 18px 2px 10px;
+  padding: 4px 28px 4px 10px;
   cursor: pointer;
   outline: none;
   -webkit-appearance: none;
@@ -478,6 +479,11 @@ header {
   background-repeat: no-repeat;
   background-position: right 8px center;
   background-size: 10px 7px;
+}
+
+#sortSelectViewAll:hover,
+#genreSelectViewAll:hover {
+  background-color: rgba(77, 45, 24, 0.05);
 }
 
 
@@ -541,6 +547,22 @@ header {
 
 .viewall-container .book-right h3 { color: white; font-size: 1.1rem; }
 .viewall-container .book-right p { color: var(--beige); font-size: 0.9rem; }
+
+.viewall-container .book-right .author-name {
+  color: #CABA9C;
+  font-style: italic;
+}
+
+.viewall-container .book-right .genre-info {
+  color: #F7F1E7;
+  font-size: 0.85rem;
+  display: block !important;
+  visibility: visible !important;
+}
+
+.viewall-container .book-right .genre-info strong {
+  color: #DA9F5B;
+}
 
 .viewall-container .book-right .synopsis {
   text-align: justify;
