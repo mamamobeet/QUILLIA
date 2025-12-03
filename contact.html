@@ -14,7 +14,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet"> 
 
     <!-- Font Awesome -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
 
     <!-- Libraries Stylesheet -->
     <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
@@ -79,40 +79,41 @@
                 <div class="col-sm-4 text-center mb-3">
                     <i class="fa fa-2x fa-map-marker-alt mb-3 text-primary"></i>
                     <h4 class="font-weight-bold">Address</h4>
-                    <p>123 Street, New York, USA</p>
+                    <p>Mambaling, Cebu City</p>
                 </div>
                 <div class="col-sm-4 text-center mb-3">
                     <i class="fa fa-2x fa-phone-alt mb-3 text-primary"></i>
                     <h4 class="font-weight-bold">Phone</h4>
-                    <p>+012 345 6789</p>
+                    <p>+63 991 647 6873</p>
                 </div>
                 <div class="col-sm-4 text-center mb-3">
                     <i class="far fa-2x fa-envelope mb-3 text-primary"></i>
                     <h4 class="font-weight-bold">Email</h4>
-                    <p>info@example.com</p>
+                    <p>info@quillia.com</p>
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-6 pb-5">
                     <iframe style="width: 100%; height: 495px;"
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1906.9046957039998!2d123.90587822493599!3d10.296796615499352!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x33a999c7d8a04abf%3A0x2dfc5468fc1dab3e!2sICT%20Building%2C%20CTU-Main!5e0!3m2!1sen!2sph!4v1764671354007!5m2!1sen!2sph" 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15702.710119504056!2d123.87056772452942!3d10.287545300232843!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x33a99c0f273fb311%3A0x74495a1541c16233!2sMambaling%2C%20Cebu%20City%2C%206000%20Cebu!5e0!3m2!1sen!2sph!4v1764733243338!5m2!1sen!2sph" 
                         frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
                 </div>
                 <div class="col-md-6 pb-5">
-                        <h5 class="mb-4">Receive messages instantly with our PHP and Ajax contact form - available in the <a href="https://htmlcodex.com/downloading/?item=1528">Pro Version</a> only.</h5>
-                        <form>
+                        <h5 class="mb-4">Have a question or feedback? Send us a message and we'll get back to you as soon as possible.</h5>
+                        <form id="contactForm">
                             <div class="control-group mb-3">
-                                <input type="text" class="form-control bg-transparent p-4" id="name" placeholder="Your Name" />
+                                <input type="text" class="form-control bg-transparent p-4" id="name" name="name" placeholder="Your Name" required />
                             </div>
                             <div class="control-group mb-3">
-                                <input type="email" class="form-control bg-transparent p-4" id="email" placeholder="Your Email" />
+                                <input type="email" class="form-control bg-transparent p-4" id="email" name="email" placeholder="Your Email" required />
                             </div>
                             <div class="control-group mb-3">
-                                <input type="text" class="form-control bg-transparent p-4" id="subject" placeholder="Subject" />
+                                <input type="text" class="form-control bg-transparent p-4" id="subject" name="subject" placeholder="Subject" required />
                             </div>
                             <div class="control-group mb-3">
-                                <textarea class="form-control bg-transparent py-3 px-4" rows="5" id="message" placeholder="Message"></textarea>
+                                <textarea class="form-control bg-transparent py-3 px-4" rows="5" id="message" name="message" placeholder="Message" required></textarea>
                             </div>
+                            <div id="formStatus" class="mb-3" style="display: none;"></div>
                             <div>
                                 <button class="btn btn-primary font-weight-bold py-3 px-5" type="submit">Send Message</button>
                             </div>
@@ -128,41 +129,29 @@
     <!-- Footer Start -->
     <div class="container-fluid footer text-white mt-5 pt-5 px-0 position-relative overlay-top">
         <div class="row mx-0 pt-5 px-sm-3 px-lg-5 mt-4">
-            <div class="col-lg-3 col-md-6 mb-5">
+            <div class="col-lg-4 col-md-6 mb-5">
                 <h4 class="text-white text-uppercase mb-4" style="letter-spacing: 3px;">Get In Touch</h4>
                 <p><i class="fa fa-map-marker-alt mr-2"></i>Mambaling, Cebu City</p>
                 <p><i class="fa fa-phone-alt mr-2"></i>+63 991 647 6873</p>
                 <p class="m-0"><i class="fa fa-envelope mr-2"></i>info@quillia.com</p>
             </div>
-            <div class="col-lg-3 col-md-6 mb-5">
+            <div class="col-lg-4 col-md-6 mb-5">
                 <h4 class="text-white text-uppercase mb-4" style="letter-spacing: 3px;">Follow Us</h4>
                 <p>Like and Follow our Social Media </p>
                 <div class="d-flex justify-content-start">
-                    <a class="btn btn-lg btn-outline-light btn-lg-square mr-2" href="#"><i class="fab fa-twitter"></i></a>
-                    <a class="btn btn-lg btn-outline-light btn-lg-square mr-2" href="#"><i class="fab fa-facebook-f"></i></a>
-                    <a class="btn btn-lg btn-outline-light btn-lg-square mr-2" href="#"><i class="fab fa-linkedin-in"></i></a>
-                    <a class="btn btn-lg btn-outline-light btn-lg-square" href="#"><i class="fab fa-instagram"></i></a>
+                    <a class="btn btn-lg btn-outline-light btn-lg-square mr-2" href="https://twitter.com" target="_blank"><i class="fab fa-x-twitter"></i></a>
+                    <a class="btn btn-lg btn-outline-light btn-lg-square mr-2" href="https://facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                    <a class="btn btn-lg btn-outline-light btn-lg-square mr-2" href="https://linkedin.com" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                    <a class="btn btn-lg btn-outline-light btn-lg-square" href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
                 </div>
             </div>
-            <div class="col-lg-3 col-md-6 mb-5">
+            <div class="col-lg-4 col-md-6 mb-5">
                 <h4 class="text-white text-uppercase mb-4" style="letter-spacing: 3px;">Open Hours</h4>
                 <div>
                     <h6 class="text-white text-uppercase">Monday - Friday</h6>
                     <p>8.00 AM - 8.00 PM</p>
                     <h6 class="text-white text-uppercase">Saturday - Sunday</h6>
                     <p>1.00 PM - 5.00 PM</p>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6 mb-5">
-                <h4 class="text-white text-uppercase mb-4" style="letter-spacing: 3px;">Newsletter</h4>
-                <p>Sign up for news and updates</p>
-                <div class="w-100">
-                    <div class="input-group">
-                        <input type="text" class="form-control border-light" style="padding: 25px;" placeholder="Your Email">
-                        <div class="input-group-append">
-                            <button class="btn btn-primary font-weight-bold px-3">Sign Up</button>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
@@ -189,6 +178,60 @@
 
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
+    
+    <!-- Contact Form Script -->
+    <script>
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const formStatus = document.getElementById('formStatus');
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const subject = document.getElementById('subject').value;
+            const message = document.getElementById('message').value;
+            
+            // Basic validation
+            if (!name || !email || !subject || !message) {
+                formStatus.style.display = 'block';
+                formStatus.className = 'alert alert-danger';
+                formStatus.innerHTML = 'Please fill in all fields.';
+                return;
+            }
+            
+            // Email validation
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                formStatus.style.display = 'block';
+                formStatus.className = 'alert alert-danger';
+                formStatus.innerHTML = 'Please enter a valid email address.';
+                return;
+            }
+            
+            // Simulate form submission (in a real app, you'd send this to a server)
+            formStatus.style.display = 'block';
+            formStatus.className = 'alert alert-success';
+            formStatus.innerHTML = '<strong>Success!</strong> Your message has been sent. We will get back to you soon!';
+            
+            // Clear form
+            this.reset();
+            
+            // Hide success message after 5 seconds
+            setTimeout(() => {
+                formStatus.style.display = 'none';
+            }, 5000);
+            
+            // Store in localStorage for demonstration
+            const messages = JSON.parse(localStorage.getItem('contactMessages') || '[]');
+            messages.push({
+                name: name,
+                email: email,
+                subject: subject,
+                message: message,
+                date: new Date().toISOString()
+            });
+            localStorage.setItem('contactMessages', JSON.stringify(messages));
+        });
+    </script>
 </body>
 
 </html>
