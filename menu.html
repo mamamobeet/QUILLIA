@@ -340,7 +340,7 @@
                     <h4 class="text-right mt-3">Total: ₱<span id="cart-total">0</span></h4>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-danger" id="clear-cart-btn">Clear All</button>
                     <button type="button" class="btn btn-primary" id="checkout-btn">Checkout</button>
                 </div>
             </div>
@@ -366,6 +366,58 @@
         </div>
     </div>
     <!-- End Success Modal -->
+
+    <!-- Customization Modal -->
+    <div class="modal fade" id="customizationModal" tabindex="-1" role="dialog" aria-labelledby="customizationModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content" style="background-color: #CABA9C;">
+                <div class="modal-header" style="border-bottom: 1px solid rgba(77,45,24,0.2);">
+                    <div>
+                        <h5 class="modal-title" id="customizationModalLabel" style="color: #4D2D18; font-weight: bold;"></h5>
+                        <p class="mb-0" style="color: #4D2D18; opacity: 0.7;">Customize your drink</p>
+                    </div>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body" style="max-height: 60vh; overflow-y: auto;">
+                    <!-- Milk Choice -->
+                    <div class="mb-4">
+                        <h6 style="color: #4D2D18; font-weight: bold; text-transform: uppercase; font-size: 0.85rem; letter-spacing: 1px;">Milk Choice</h6>
+                        <div id="milk-options" class="row"></div>
+                    </div>
+                    
+                    <!-- Flavor Syrup -->
+                    <div class="mb-4">
+                        <h6 style="color: #4D2D18; font-weight: bold; text-transform: uppercase; font-size: 0.85rem; letter-spacing: 1px;">Flavor Syrup</h6>
+                        <div id="syrup-options" class="row"></div>
+                    </div>
+                    
+                    <!-- Espresso Shots -->
+                    <div class="mb-4">
+                        <h6 style="color: #4D2D18; font-weight: bold; text-transform: uppercase; font-size: 0.85rem; letter-spacing: 1px;">Espresso Shots</h6>
+                        <div id="shots-options" class="row"></div>
+                    </div>
+                    
+                    <!-- Sugar Level -->
+                    <div class="mb-4">
+                        <h6 style="color: #4D2D18; font-weight: bold; text-transform: uppercase; font-size: 0.85rem; letter-spacing: 1px;">Sugar Level</h6>
+                        <div id="sugar-options" class="row"></div>
+                    </div>
+                </div>
+                <div class="modal-footer" style="background-color: #4D2D18; border-top: none;">
+                    <div class="d-flex justify-content-between align-items-center w-100">
+                        <div>
+                            <small style="color: #CABA9C; opacity: 0.7;">Total Price</small>
+                            <h4 class="mb-0" style="color: #CABA9C; font-weight: bold;">₱<span id="custom-total-price">0.00</span></h4>
+                        </div>
+                        <button type="button" class="btn btn-primary px-5 py-2" id="confirm-customization-btn" style="background-color: #CABA9C; border: none; color: #4D2D18; font-weight: bold;">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Customization Modal -->
 
 
     <!-- Footer Start -->
@@ -423,6 +475,46 @@
     <!-- Cart Functionality -->
     <script>
         $(document).ready(function() {
+            // Add-ons configuration
+            const ADD_ONS = {
+                milk: [
+                    { name: "Whole Milk", price: 0.00 },
+                    { name: "Skim Milk", price: 0.00 },
+                    { name: "Oat Milk", price: 40.00 },
+                    { name: "Almond Milk", price: 40.00 },
+                    { name: "Soy Milk", price: 40.00 },
+                ],
+                syrup: [
+                    { name: "No Syrup", price: 0.00 },
+                    { name: "Vanilla", price: 25.00 },
+                    { name: "Caramel", price: 25.00 },
+                    { name: "Hazelnut", price: 25.00 },
+                    { name: "Lavender", price: 40.00 },
+                ],
+                shots: [
+                    { name: "Single Shot", price: 0.00 },
+                    { name: "Double Shot", price: 55.00 },
+                    { name: "Triple Shot", price: 80.00 },
+                ],
+                sugar: [
+                    { name: "100% Sugar", price: 0.00 },
+                    { name: "50% Sugar", price: 0.00 },
+                    { name: "0% Sugar", price: 0.00 },
+                ]
+            };
+
+            // Customization state
+            let customizationState = {
+                product: null,
+                basePrice: 0,
+                options: {
+                    milk: ADD_ONS.milk[0],
+                    syrup: ADD_ONS.syrup[0],
+                    shots: ADD_ONS.shots[0],
+                    sugar: ADD_ONS.sugar[0]
+                }
+            };
+            
             // Load cart from localStorage or initialize empty
             let cart = JSON.parse(localStorage.getItem('quilliaCart')) || [];
 
@@ -434,26 +526,156 @@
             // Initialize on page load
             updateCartCount();
 
-            // Add to cart button click
+            // Add to cart button click - Open customization modal
             $('.add-to-cart').on('click', function() {
                 const name = $(this).data('name');
                 const price = parseFloat($(this).data('price'));
                 
-                // Check if item already exists in cart
-                const existingItem = cart.find(item => item.name === name);
+                // Set customization state
+                customizationState.product = name;
+                customizationState.basePrice = price;
+                customizationState.options = {
+                    milk: ADD_ONS.milk[0],
+                    syrup: ADD_ONS.syrup[0],
+                    shots: ADD_ONS.shots[0],
+                    sugar: ADD_ONS.sugar[0]
+                };
+                
+                // Open customization modal
+                openCustomizationModal();
+            });
+
+            // Open customization modal
+            function openCustomizationModal() {
+                $('#customizationModalLabel').text(customizationState.product);
+                renderCustomizationOptions();
+                updateCustomizationPrice();
+                $('#customizationModal').modal('show');
+            }
+
+            // Render customization options
+            function renderCustomizationOptions() {
+                // Render milk options
+                let milkHtml = '';
+                ADD_ONS.milk.forEach((option, index) => {
+                    const isSelected = customizationState.options.milk.name === option.name;
+                    milkHtml += `
+                        <div class="col-6 mb-2">
+                            <button class="btn btn-block ${isSelected ? 'btn-dark' : 'btn-outline-dark'} btn-sm customize-option" 
+                                    data-category="milk" data-index="${index}" style="text-align: left;">
+                                ${option.name} ${option.price > 0 ? '+₱' + option.price.toFixed(2) : ''}
+                            </button>
+                        </div>
+                    `;
+                });
+                $('#milk-options').html(milkHtml);
+
+                // Render syrup options
+                let syrupHtml = '';
+                ADD_ONS.syrup.forEach((option, index) => {
+                    const isSelected = customizationState.options.syrup.name === option.name;
+                    syrupHtml += `
+                        <div class="col-6 mb-2">
+                            <button class="btn btn-block ${isSelected ? 'btn-dark' : 'btn-outline-dark'} btn-sm customize-option" 
+                                    data-category="syrup" data-index="${index}" style="text-align: left;">
+                                ${option.name} ${option.price > 0 ? '+₱' + option.price.toFixed(2) : ''}
+                            </button>
+                        </div>
+                    `;
+                });
+                $('#syrup-options').html(syrupHtml);
+
+                // Render shots options
+                let shotsHtml = '';
+                ADD_ONS.shots.forEach((option, index) => {
+                    const isSelected = customizationState.options.shots.name === option.name;
+                    shotsHtml += `
+                        <div class="col-6 mb-2">
+                            <button class="btn btn-block ${isSelected ? 'btn-dark' : 'btn-outline-dark'} btn-sm customize-option" 
+                                    data-category="shots" data-index="${index}" style="text-align: left;">
+                                ${option.name} ${option.price > 0 ? '+₱' + option.price.toFixed(2) : ''}
+                            </button>
+                        </div>
+                    `;
+                });
+                $('#shots-options').html(shotsHtml);
+
+                // Render sugar options
+                let sugarHtml = '';
+                ADD_ONS.sugar.forEach((option, index) => {
+                    const isSelected = customizationState.options.sugar.name === option.name;
+                    sugarHtml += `
+                        <div class="col-6 mb-2">
+                            <button class="btn btn-block ${isSelected ? 'btn-dark' : 'btn-outline-dark'} btn-sm customize-option" 
+                                    data-category="sugar" data-index="${index}" style="text-align: left;">
+                                ${option.name}
+                            </button>
+                        </div>
+                    `;
+                });
+                $('#sugar-options').html(sugarHtml);
+            }
+
+            // Handle customization option selection
+            $(document).on('click', '.customize-option', function() {
+                const category = $(this).data('category');
+                const index = $(this).data('index');
+                
+                customizationState.options[category] = ADD_ONS[category][index];
+                renderCustomizationOptions();
+                updateCustomizationPrice();
+            });
+
+            // Update customization price
+            function updateCustomizationPrice() {
+                const addonsPrice = customizationState.options.milk.price + 
+                                  customizationState.options.syrup.price + 
+                                  customizationState.options.shots.price;
+                const totalPrice = customizationState.basePrice + addonsPrice;
+                $('#custom-total-price').text(totalPrice.toFixed(2));
+            }
+
+            // Confirm customization and add to cart
+            $('#confirm-customization-btn').on('click', function() {
+                const addonsPrice = customizationState.options.milk.price + 
+                                  customizationState.options.syrup.price + 
+                                  customizationState.options.shots.price;
+                const totalPrice = customizationState.basePrice + addonsPrice;
+                
+                // Create cart item with customization
+                const cartItem = {
+                    name: customizationState.product,
+                    price: totalPrice,
+                    basePrice: customizationState.basePrice,
+                    qty: 1,
+                    options: {
+                        milk: customizationState.options.milk.name,
+                        syrup: customizationState.options.syrup.name,
+                        shots: customizationState.options.shots.name,
+                        sugar: customizationState.options.sugar.name
+                    }
+                };
+                
+                // Check if same item with same customization exists
+                const existingItem = cart.find(item => 
+                    item.name === cartItem.name &&
+                    item.options.milk === cartItem.options.milk &&
+                    item.options.syrup === cartItem.options.syrup &&
+                    item.options.shots === cartItem.options.shots &&
+                    item.options.sugar === cartItem.options.sugar
+                );
                 
                 if (existingItem) {
                     existingItem.qty += 1;
                 } else {
-                    cart.push({ name: name, price: price, qty: 1 });
+                    cart.push(cartItem);
                 }
                 
                 saveCart();
                 updateCartCount();
-                updateCartDisplay();
                 
-                // Show brief notification
-                showNotification(name + ' added to cart!');
+                $('#customizationModal').modal('hide');
+                showNotification(customizationState.product + ' added to cart!');
             });
 
             // Update cart count badge
@@ -484,9 +706,22 @@
                     const itemTotal = item.price * item.qty;
                     total += itemTotal;
                     
+                    // Build customization details if available
+                    let customDetails = '';
+                    if (item.options) {
+                        customDetails = `
+                            <div style="font-size: 0.75rem; color: #CABA9C; opacity: 0.8; margin-top: 4px;">
+                                ${item.options.milk} | ${item.options.syrup} | ${item.options.shots} | ${item.options.sugar}
+                            </div>
+                        `;
+                    }
+                    
                     $cartItems.append(`
                         <tr>
-                            <td>${item.name}</td>
+                            <td>
+                                ${item.name}
+                                ${customDetails}
+                            </td>
                             <td>
                                 <div class="d-flex align-items-center">
                                     <button class="btn btn-sm btn-outline-light qty-btn" data-index="${index}" data-action="decrease">-</button>
@@ -541,6 +776,21 @@
                 saveCart();
                 updateCartCount();
                 updateCartDisplay();
+            });
+
+            // Clear All button
+            $('#clear-cart-btn').on('click', function() {
+                if (cart.length === 0) {
+                    alert('Your cart is already empty!');
+                    return;
+                }
+                
+                if (confirm('Are you sure you want to clear all items from your cart?')) {
+                    cart = [];
+                    saveCart();
+                    updateCartCount();
+                    updateCartDisplay();
+                }
             });
 
             // Checkout button
@@ -602,6 +852,48 @@
             font-size: 0.85rem;
             font-weight: bold;
             margin-top: 5px;
+        }
+        
+        /* Customization Modal */
+        #customizationModal .modal-content {
+            border: none;
+            border-radius: 15px;
+        }
+        
+        #customizationModal .close {
+            color: #4D2D18;
+            opacity: 1;
+        }
+        
+        #customizationModal .btn-outline-dark {
+            border-color: rgba(77, 45, 24, 0.3);
+            color: #4D2D18;
+            background-color: transparent;
+        }
+        
+        #customizationModal .btn-outline-dark:hover {
+            background-color: rgba(77, 45, 24, 0.1);
+            border-color: #4D2D18;
+        }
+        
+        #customizationModal .btn-dark {
+            background-color: #4D2D18;
+            border-color: #4D2D18;
+            color: #CABA9C;
+        }
+        
+        #customizationModal .modal-body::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        #customizationModal .modal-body::-webkit-scrollbar-track {
+            background: rgba(77, 45, 24, 0.1);
+            border-radius: 10px;
+        }
+        
+        #customizationModal .modal-body::-webkit-scrollbar-thumb {
+            background: #4D2D18;
+            border-radius: 10px;
         }
         
         /* Floating Cart Button */
