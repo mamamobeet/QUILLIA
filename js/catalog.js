@@ -698,12 +698,6 @@ function createViewAllBookCard(book) {
     </div>
   `;
 
-  card.addEventListener("click", (e) => {
-    if (e.target.closest('.feedback-bubbles') || e.target.classList.contains('bubble-plus')) return;
-    document.querySelectorAll(".viewall-container .book-card").forEach(c => c.classList.remove("selected"));
-    card.classList.add("selected");
-  });
-
   const bubblesContainer = card.querySelector('.feedback-bubbles');
   renderFeedbackBubbles(bubblesContainer, book.rating?.reviews || []);
   return card;

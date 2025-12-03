@@ -152,7 +152,6 @@ header {
 }
 
 .book-card:hover {
-  transform: scale(1.07);
   box-shadow: 0 6px 20px rgba(0,0,0,0.35);
 }
 
@@ -509,15 +508,7 @@ header {
   border-radius: 10px;
   height: auto;
   box-sizing: border-box;
-  transition: background 0s;
-}
-
-.viewall-container .book-card.selected,
-.viewall-container .book-card:hover {
-  background: rgba(50,70,45,0.95); 
-  box-shadow: none;
-  transform: none;
-  transition: background-color 0.2s, color 0.2s;
+  cursor: default;
 }
 
 .viewall-container .book-left { flex-shrink: 0; }

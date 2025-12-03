@@ -35,6 +35,22 @@
             color: #333 !important;
             background-color: white !important;
         }
+        
+        /* White calendar and clock icons for date/time inputs */
+        input[type="date"].bg-transparent.border-primary::-webkit-calendar-picker-indicator,
+        input[type="time"].bg-transparent.border-primary::-webkit-calendar-picker-indicator {
+            filter: invert(1) brightness(100);
+            cursor: pointer;
+        }
+        
+        /* Remove dropdown arrow from select */
+        select.bg-transparent.border-primary {
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            background-image: none;
+            padding-right: 15px;
+        }
     </style>
 </head>
 
@@ -94,7 +110,11 @@
     </div>
     <!-- Subscription Section End -->
 
-    <h1 class="text-primary text-uppercase" style="text-align: center;">Our Subscription Plans<br></h1>
+    <div class="container-fluid pt-3">
+        <div class="container">
+            <h1 class="text-primary text-uppercase" style="text-align: center;">Our Subscription Plans</h1>
+        </div>
+    </div>
 
     <div class="container-fluid reservation position-relative overlay-top overlay-bottom my-5">
         <div class="container">
@@ -156,48 +176,48 @@
                 <h1 class="display-4" style="text-align: center;">Our Member Benefits<br></h1>
             <div class="row">
                 <div class="col-lg-6 mb-5">
-                    <div class="row align-items-center">
-                        <div class="col-sm-7">
+                    <div class="row align-items-center justify-content-center">
+                        <div class="col-sm-10 text-center">
                             <h4><i class="fa fa-coffee service-icon"></i>Exclusive Discounts</h4>
                             <p class="m-0">Enjoy exclusive discounts off all beverages every day</p>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-6 mb-5">
-                    <div class="row align-items-center">
-                        <div class="col-sm-7">
+                    <div class="row align-items-center justify-content-center">
+                        <div class="col-sm-10 text-center">
                             <h4><i class="fa fa-coffee service-icon"></i>Priority Booking</h4>
                             <p class="m-0">Get first access to book readings, author signings, and workshops</p>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-6 mb-5">
-                    <div class="row align-items-center">
-                        <div class="col-sm-7">
+                    <div class="row align-items-center justify-content-center">
+                        <div class="col-sm-10 text-center">
                             <h4><i class="fa fa-coffee service-icon"></i>Free Book</h4>
                             <p class="m-0">Receive a curated book selection every month from our staff picks</p>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-6 mb-5">
-                    <div class="row align-items-center">
-                        <div class="col-sm-7">
+                    <div class="row align-items-center justify-content-center">
+                        <div class="col-sm-10 text-center">
                             <h4><i class="fa fa-coffee service-icon"></i>Birthday Perks</h4>
                             <p class="m-0">Complimentary drink and dessert on your special day</p>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-6 mb-5">
-                    <div class="row align-items-center">
-                        <div class="col-sm-7">
+                    <div class="row align-items-center justify-content-center">
+                        <div class="col-sm-10 text-center">
                             <h4><i class="fa fa-coffee service-icon"></i>Reserved Seating</h4>
                             <p class="m-0">Enjoy exclusive discounts off all beverages every day</p>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-6 mb-5">
-                    <div class="row align-items-center">
-                        <div class="col-sm-7">
+                    <div class="row align-items-center justify-content-center">
+                        <div class="col-sm-10 text-center">
                             <h4><i class="fa fa-coffee service-icon"></i>Monthly Newsletter</h4>
                             <p class="m-0">Exclusive content, reviews, and early announcements</p>
                         </div>

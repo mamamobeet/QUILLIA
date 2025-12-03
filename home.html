@@ -57,6 +57,13 @@
         .bg-transparent.border-primary::placeholder {
             color: rgba(255, 255, 255, 0.7) !important;
         }
+        
+        /* White calendar and clock icons for date/time inputs */
+        input[type="date"].bg-transparent.border-primary::-webkit-calendar-picker-indicator,
+        input[type="time"].bg-transparent.border-primary::-webkit-calendar-picker-indicator {
+            filter: invert(1) brightness(100);
+            cursor: pointer;
+        }
     </style>
 </head>
 
